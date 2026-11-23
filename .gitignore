@@ -1,0 +1,10 @@
+disks/
+volumes/
+build/
+notes/wiki-*
+jobs/
+*.aux
+*.log
+__pycache__/
+*.xdv
+.DS_Store

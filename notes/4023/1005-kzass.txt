@@ -1,0 +1,387 @@
+ MOДYЛЬ 'MOДYЛЬKЗ'
+!
+!========================================================*
+!                                                        !
+!       KOHTPOЛЬHAЯ ЗAДAЧA "KЗACC" BK ЭЛЬБPYC 1-KБ       !
+!                                                        !
+!    ДEMOHCTPAЦИЯ ACCEMБЛEPA И OCHOBHЫX BOЗMOЖHOCTEЙ     !
+!                  COБCTBEHHOГO PEЖИMA                   !
+!                                                        !
+!                                                        !
+!  OПИCAHИE AЛГOPИTMA                                    !
+!  -------- ---------                                    !
+!                                                        !
+!  1. CTPOИTCЯ KBAДPATHAЯ MATPИЦA PAHГA N CПEЦИAЛЬHOГO   !
+!     BИДA:                                              !
+!                                                        !
+!      A (I,J) =   FLOAT (I) / FLOAT (J), ECЛИ I <= J    !
+!                                                        !
+!      A (I,J) = - FLOAT (I) / FLOAT (J), ECЛИ I > J     !
+!                                                        !
+!  2. MATPИЦA B ПOЛYЧAETCЯ TPAHCПOHИPOBAHИEM MATPИЦЫ A:  !
+!                                                        !
+!     B (I,J) = A (J,I)                                  !
+!                                                        !
+!  3. MATPИЦЫ A И B ПEPEMHOЖAЮTCЯ:                       !
+!                                                        !
+!     C = A * B                                          !
+!                                                        !
+!  4. BЫЧИCЛЯETCЯ L-HOPMA MATPИЦЫ C.                     !
+!                                                        !
+!                                                        !
+!  PEЗYЛЬTATЫ PAБOTЫ                                     !
+!  ---------- ------                                     !
+!                                                        !
+!  1. ИCXOДHЫЙ TEKCTA ПOДBEPГAETCЯ TPAHCЛЯЦИИ ACCEMБЛE-  !
+!     POM BK ЭЛЬБPYC 1-KБ. B PEЗYЛЬTATE TPAHCЛЯЦИИ ДOЛ-  !
+!     ЖEH БЫTЬ ПOЛYЧEH OБ'EKTHЫЙ MOДYЛЬ И ЛИCTИHГ ПPOГ-  !
+!     PAMMЫ, HE COДEPЖAЩИЙ COOБЩEHИЙ OБ OШИБKAX.         !
+!                                                        !
+!  2. ПOЛYЧEHHЫЙ ПPИ TPAHCЛЯЦИИ OБ'EKTHЫЙ  MOДYЛЬ OБPA-  !
+!     БATЫBAETCЯ KOMПOHOBЩИKOM  BK ЭЛЬБPYC 1-KБ.  B PE-  !
+!     ЗYЛЬTATE ДOЛЖHA  БЫTЬ ПOЛYЧEHA ГOTOBAЯ  ПPOГPAMMA  !
+!     И ЛИCTИHГ, HE COДEPЖAЩИЙ COOБЩEHИЙ OБ OШИБKAX.     !
+!                                                        !
+!  3. ГOTOBAЯ ПPOГPAMMA BЫПOЛHЯETCЯ HA BK ЭЛЬБPYC 1-KБ.  !
+!     B KOHЦE CЧETA HA ПEЧATЬ BЫДAETCЯ ЧИCЛO:            !
+!                                                        !
+!       1234567890                                       !
+!                                                        !
+!========================================================*
+!
+ CTPH
+KЗACC CEKЦИЯ 400H,ЛKOM,ПPEФ
+KЗACC БЛOK
+!===========================================!
+!       PAЗMEPЫ И PACПOЛOЖEHИE MATPИЦ       !
+!===========================================!
+N ЭKB 1000      ..PAHГ KBAДPATHOЙ MATPИЦЫ
+ПOЛE CEKЦИЯ 100000B,П27,ФИKT,HBЫП ..ПOЛE ДЛЯ MATPИЦ
+A_ПAM ПAM N * N
+B_ПAM ПAM N * N
+C_ПAM ПAM N * N
+ CEKЦИЯ KЗACC
+CTATИCTИKA ЭKB 10B
+TИПЗ ЭKB 12B
+!===============================!
+!       ИHДEKC - PEГИCTPЫ       !
+!===============================!
+ЭTAП ЭKB 1      ..HOMEP ЭTAПA (1-4)
+A    ЭKB 2      ..БAЗA ДЛЯ MATPИЦЫ A
+B    ЭKB 3      ..БAЗA ДЛЯ MATPИЦЫ B
+C    ЭKB 4      ..БAЗA ДЛЯ MATPИЦЫ C
+I    ЭKB 5      ..HOMEP CTPOKИ
+J    ЭKB 6      ..HOMEP CTOЛБЦA
+KI   ЭKB 7      ..БAЗA CTPOKИ ПPИ YMHOЖEHИИ
+KJ   ЭKB 8      ..БAЗA CTOЛБЦA ПPИ YMHOЖEHИИ
+WI   ЭKB 9      ..ДЛЯ ЦИKЛA ПO CTPOKAM
+WJ   ЭKB 10     ..ДЛЯ ЦИKЛA ПO CTOЛБЦAM
+ПAP  ЭKB 12     ..ДЛЯ ПEPEДAЧИ ПAPAMETPOB
+P    ЭKB 14     ..ДЛЯ PAЗHЫX HYЖД
+S    ЭKB 15     ..YKAЗATEЛЬ CTEKA
+!=================================!
+!       HAЧAЛЬHЫE YCTAHOBKИ       !
+!=================================!
+BXOД YPЖ 0     ..PAЗPEШEHИE HOPMAЛИЗAЦИИ И OKPYГЛEHИЯ
+ ЭK 11H        ..BPEMЯ
+: CДЛ 16
+ ЗП CTATИCTИKA
+ YИA STACK(S)  ..HAЧAЛO CTEKA
+!==================================!
+!       ПOCTPOEHИE MATPИЦЫ A       !
+!==================================!
+POCПИCЬ БЛOK
+ YИA 1(ЭTAП)     ..ИHДИKATOP ЭTAПA
+ YИA A_ПAM(A)    ..БAЗA A
+ YИA 1(I)        ..I=1
+ YИA 1-N(WI)     ..ЦИKЛ OT 1 ДO N
+MATPИЦA YИA 1(J) ..J=1
+ YИA 1-N(WJ)     ..ЦИKЛ OT 1 ДO N
+CTPOKA YИИ P(J)  ..P=J
+ BЧИ P(I)        ..P=J-I
+ BИЦ P           ..BЫДAЧA ИHДEKCA C PACПPOCTPAHEHИEM ЗHAKA
+ BИM J           ..COXPAHEHИE (J-I) B CTEKE
+ KOP 400H+52     ..HOPMAЛИЗAЦИЯ
+ BИM I           ..FLOAT (J) - B CTEKE, I - HA CYMMATOPE
+ KOP 400H+52     ..HOPMAЛИЗAЦИЯ
+ ДEЛ (S)         ..ДEЛEHИE HOPMAЛИЗOBAHHЫX
+ ИЗ (S)          ..ИЗMEHEHИE ЗHAKA, ECЛИ I>J
+ ЗП+ 1(A)        ..KOMПOHEHTHAЯ OПEPAЦИЯ:
+                 ..ЗAПИCЬ ПO (A) И YBEЛИЧEHИE A HA 1
+ CЛИA 1(J)       ..J=J+1
+ ЦИKЛ CTPOKA(WJ) ..ЗAПOЛHEHИE CTPOKИ
+ CЛИA 1(I)       ..I=I+1
+ ЦИKЛ MATPИЦA(WI)..ЗAПOЛHEHИE MATPИЦЫ
+ KБЛOK POCПИCЬ
+!==============================================!
+!       ПOCTPOEHИE B TPAHCПOHИPOBAHИEM A       !
+!==============================================!
+TPAHCПO БЛOK
+ YИA 2(ЭTAП)
+ YИA A_ПAM(A)    ..БAЗA A
+ YИA B_ПAM(B)    ..БAЗA B
+ YИA 2-N(WI)     ..ЦИKЛ ПO CTPOKAM OT 1 ДO N
+ YИИ P(B) ..HET--------
+MATPИЦA  HOП ..----------
+ ГPYП N-1        ..ГPYППOBOЙ PEЖИM:
+                 ..CЛEДYЮЩИE ДBE KOMAHДЫ БYДYT BЫПOЛHEHЫ N PAЗ
+ CЧ+ 1(A)        ..KOMПOHEHTHOE CЧИTЫBAHИE : A=A+1
+ ЗП+ 1(P) ..KOMПOHEHTHAЯ ЗAПИCЬ : B=B+N
+                 ..(MATPИЦЫ PACПOЛAГAЮTCЯ B ПAMЯTИ ПO CTPOKAM)
+ CЛИA 1(A) ..-----------
+ ЦИKЛ MATPИЦA(WI)..ЦИKЛ ПO CTPOKAM
+ CЧ+ 1(A)
+ ЗП+ 1(P)
+ YИA A_ПAM(A)
+ ГPYП N-2
+ CЧ+ N(B)
+ ЗП+ 1(P)
+ KБЛOK TPAHCПO
+!==============================!
+!       YMHOЖEHИE MATPИЦ       !
+!==============================!
+YMHOЖЬ БЛOK
+ YИA 3(ЭTAП)
+ YИA A_ПAM(A)    ..БAЗA A
+ YИA B_ПAM(B)    ..БAЗA B
+ YИA C_ПAM(C)    ..БAЗA C
+ YИA 1(I)        ..I=1
+ YИA 1-N(WI)     ..ЦИKЛ ПO I OT 1 ДO N
+MATPИЦA YИA 1(J) ..J=1
+ YИA 1-N(WJ)     ..ЦИKЛ ПO J OT 1 ДO N
+CTPOKA YPЖ 30H   ..БЛOKИPOBKA HOPMAЛИЗAЦИИ И OKPYГЛEHИЯ
+ BИЦ I
+ BЧЦ 1           ..ЦEЛOE BЫЧИTAHИE ЛИTEPAЛA
+ YMH PAHГ        ..ЦEЛOE YMHOЖEHИE
+ YPЖ 0           ..CTAHДAPTHЫЙ PEЖИM AY
+ YИ KI           ..KI= (I-1) * N
+ CЛИ KI(A)       ..KI=KI+A : БAЗA CTPOKИ
+ YPЖ 30H ..-----------
+ BИЦ J ..-------------
+ BЧЦ 1 ..------------
+ YMH PAHГ ..----------
+ YPЖ 0 ..------------
+ YИ KJ ..-----------
+ CЛИ KJ(B) ..----------
+!====================================!
+!       BEKTOPHOE ПPOИЗBEДEHИE       !
+!====================================!
+ CЧ 0              ..CYMMA=0
+ YИA 1-N(P)        ..CЧETЧИK ЦИKЛA
+ЭЛEMEHT CЧM+ 1(KI) ..MAГAЗИHHOE KOMПOHEHTHOE CЧИTЫBAHИE
+ YMH+ 1(KJ)        ..KJ=KJ+N
+ CЛ (S)            ..CYMMA XPAHИTCЯ B CTEKE
+ ЦИKЛ ЭЛEMEHT(P)
+ ЗП+ 1(C)          ..OЧEPEДHOЙ ЭЛEMEHT ПPOИЗBEДEHИЯ
+ CЛИA 1(J)
+ ЦИKЛ CTPOKA(WJ)   ..ЦИKЛ ПO CTOЛБЦAM
+ CЛИA 1(I)
+ ЦИKЛ MATPИЦA(WI)  ..ЦИKЛ ПO CTPOKAM
+ KБЛOK YMHOЖЬ
+!==========================================!
+!       BЫЧИCЛEHИE L-HOPMЫ MATPИЦЫ C       !
+!==========================================!
+ИTOГ БЛOK
+ YИA 4(ЭTAП)
+ YИA C_ПAM(C)      ..БAЗA C
+ YИA 1(J)          ..HOMEP CTOЛБЦA
+ YИA 1-N(WJ)       ..ЦИKЛ ПO J OT 1 ДO N
+ ЗПH L             ..ЗAПИCЬ HYЛЯ
+HOPMA ПФA (C)      ..ПPEФИKCAЦИЯ БAЗOЙ C
+ YИA -1(P)
+ CЛИ P(J)         ..P - БAЗA OЧEPEДHOГO CTOЛБЦA
+ YИA 1-N(WI)       ..ЦИKЛ ПO CTPOKAM
+ CЧ 0              ..CYMMA=0
+CTOЛБEЦ CЧM (P)    ..OЧEPEДHOЙ ЭЛEMEHT, CYMMA - B CTEK
+ ИЗ+ N(P)          ..ABS ( C (I,J) ), P=P+N
+ CЛ (S)            ..CYMMA AБCOЛЮTHЫX BEЛИЧИH
+ ЦИKЛ CTOЛБEЦ(WI)
+ ЗП PAБ            ..CYMMA CTOЛЦБA
+ BЧOБ L            ..OБPATHOE BЫЧИTAHИE : L-PAБ
+ ПБP ДAЛЬШE        ..ПEPEXOД ПPИ L>=PAБ
+ CЧ PAБ
+ ЗП L              ..L - MAKCИMAЛЬHAЯ CYMMA
+ДAЛЬШE CЛИA 1(J)
+ ЦИKЛ HOPMA(WJ)    ..ЦИKЛ ПO CTOЛБЦAM
+ KБЛOK ИTOГ
+!===============================!
+!       BЫДAЧA PEЗYЛЬTATA       !
+!===============================!
+ ЭK 11H       ..BPEMЯ
+: CДЛ 16
+ ЗП CTATИCTИKA+1
+ CЧ =.17
+ ЗП TИПЗ    ..TИП ЗAДAЧИ - ACCEMБЛEP
+ YИA ПAPAM(ПAP)
+ ПБ PRINT          ..ПEЧATЬ L И KOHEЦ
+ ПФA ..ПOKA 9.02.89
+!====================================!
+!       ПEPEMEHHЫE И KOHCTAHTЫ       !
+!====================================!
+STACK ПAM 8  ..HEБOЛЬШOЙ CTEK
+PAБ ПAM 1
+L ПAM 1
+PAHГ KOHД N  ..ЦEЛAЯ KOHCTAHTA
+ПAPAM KOHД L ..BEKTOP AДPECOB ПAPAMETPOB
+ KOHД =1
+ ЛИTEP       ..PAЗMEЩEHИE ЛИTEPAЛOB
+!===============================!
+!       BHEШHИE ПPOЦEДYPЫ       !
+!===============================!
+PRINT BHEШ 'PRINT'
+ KБЛOK KЗACC
+ ФИHИШ
+*READ OLD
+ШИФP 419931000001 ЗCX^ЛEH 31(FTNB)42(PEЖИM3-ЗП)^OЗY 32^
+EEB1A3
+*NAME
+*TAPES:42012
+*     CALL YESLIS
+*     FULL LIST
+*SUPER
+*FICME
+*     CHECK:DLIST
+*NO LI
+*TRANS:INITFTN,,31
+C
+C   **   TECT 5. БЫCTPAЯ COPTИPOBKA
+C
+C        PEЗYЛЬTATЫ ИCПOЛHEHИЯ:
+C
+C  -98.032-43.657 -5.575  1.905 13.018 90.943 65.598 62.966-42.435...
+C  -98.937-98.923-98.872-98.854-98.804-98.671-98.634-98.558-98.542...
+C
+      PROGRAM T305
+      PARAMETER (NX=500 000)
+      REAL X(NX)
+      BASED X/IX
+      INTEGER L, R, SL(20), SR(20)
+      CALL PTIME
+      IX = 100 000B
+      KR = 105
+      A  = -99.
+      B  =  99.
+      DO 11 I=1,NX
+      KR = 3125 * KR
+      KR = KR - (KR / 67108864) * 67108864
+   11 X(I)= KR / 67108864. * (B - A) + A
+      L = 1
+      R = NX
+      M = 0
+    1 I = L
+      J = R
+      A = X(L)
+    2 IF (X(J).GE.A) GO TO 4
+      X(I) = X(J)
+    3 I = I + 1
+      IF (I.EQ.J) GO TO 5
+      IF (A.GE.X(I)) GO TO 3
+      X(J) = X(I)
+    4 J = J - 1
+      IF (I.NE.J) GO TO 2
+    5 X(I) = A
+      M = M + 1
+      IF (I-L.LT.R-I) GO TO 6
+      SL(M) = L
+      SR(M) = I - 1
+      L = I + 1
+      GO TO 7
+    6 SL(M) = I + 1
+      SR(M) = R
+      R = I - 1
+    7 IF (R-L.GE.1) GO TO 1
+      IF (M.EQ.0) GOTO 100
+      R = SR(M)
+      L = SL(M)
+      M = M - 1
+      GO TO 7
+ 100  CONTINUE
+      CALL PTIME
+      CALL PRINT (X,10)
+C     PRINT 101,(X(I),I=1,12)
+C 101 FORMAT (6F10.4)
+      END
+*     NO LOAD
+*     EXECU
+*END F
+*READ OLD
+*END FILE
+ MOДYЛЬ 'ПPИHTEP'
+ПPИHTEP CEKЦИЯ 7800H,П20,ЛKOM
+PRINT:БЛOK
+ ПФ 0(AP)
+ YИA (YKЧ)
+ ПФ 1(AP)
+ CЧ
+ YИ CЧET
+ CЛKЛ KYДA+1
+ CДП -16
+ ИЛИ ИC64
+ ЗП KYДA
+ CЧ ИC64A
+ ЗП KYДA+1
+ YИA KYДA+2(YKЗ)
+ЦИKЛ ПИPB KOHEЦ(CЧET)
+ CЧ (YKЧ)
+ CДП 53
+ BЧ =3C0H
+ ПMH ПЛOЧ
+ ЗП X
+ BЧ =80H
+ ПБP ПЛOЧ
+ CЧ+ 1(YKЧ)
+ И =.[53:13]
+ CДП -4
+ ЗП (YKЗ)
+ CЧ X
+ CДП -57
+ ИЛИ (YKЗ)
+ЦИKЛ1 ЗП+ 1(YKЗ)
+ CЛИA -1(CЧET)
+ ПБ ЦИKЛ
+ПЛOЧ CЛИA 1(YKЧ)
+ CЧ =.[64:17]
+ ПБ ЦИKЛ1
+AP ЭKB 12
+YKЧ ЭKB 1
+YKЗ ЭKB 2
+CЧET ЭKB 3
+KYДA ЭKB 76000B
+ИC64 KOHД [25+16] /(KYДA+2)/
+ИC64A KOHД [25+16] 300010H  !  [1+16] 814004H
+X ПAM
+ ЛИTEP
+KOHEЦ HOП
+ YИA 1(13)
+ ЭK 10H  ..ПEPEXOД B ПEPBЫЙ PEЖИM
+ KБЛOK PRINT
+ ФИHИШ
+*READ OLD
+*END FILE
+ШИФP 419930000001 ЗЭБ^
+ЛEH 30(APAП)31(ACCEMБЛEP.PEЖИM3)42(PEЖИM3)43(PEЖИM3-ЗП)^
+OЗY 32^TPA 8^
+EEB1A5
+ФAЙЛ 420001
+TPH
+-----------
+ЛИCT=-*; ЛCT; YПЛ; ФOP=128; ПOЗ=10,8,20
+MOД=430010,1;
+..CEK; MET;
+*READ OLD
+*END FILE
+ШИФP 419930000002 ЗЭБ^
+ЛEH 30(KOMПOH.PEЖИM3)42(PEЖИM3)43(PEЖИM3-ЗП)^
+OЗY 32^
+EEB1A5
+ФAЙЛЫ KЗAMOД=420010, ПPИMOД=420015, KЗAГП=430011;
+ЗAГP KЗAMOД, ПPИMOД, KЗAГП/CИC=400H, CИCBЫB/ЛИCT;
+*READ OLD
+ШИФP 419931000002 ЗЭБ^
+ЛEH 30(KOMПOH.PEЖИM3)42(PEЖИM3)43(PEЖИM3-ЗП)43(1C)^
+OЗY 32^
+EEB1A5
+ФAЙЛЫ KЗФMOД=420012, ГП=430013;
+ЗAГP KЗФMOД, ГП/CИC=400H, CИCBЫB/ЛИCT;
+*READ OLD
+*END FILE

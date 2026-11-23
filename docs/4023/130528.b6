@@ -1,0 +1,621 @@
+ШИФР 130528 ЗС5
+TPA 100^
+AЦПY 30^
+BPE 500^
+OЗY 32^
+ЛEHT 31(2248-2702)^
+ЛЕН 41(2048)^
+EEB1A3
+*NAME BK-ЭБ TY
+*PERSO:31
+*CALL FICMEMORY
+*NO LIST
+*NO LOAD
+       PROGRAMMA
+       CALL YESLIS
+       CALL NEWLIS
+       CALL NOTLIS
+       PRINT 11111
+11111  FORMAT(68(/))
+       CALL SCHEMA
+       STOP
+       END
+*EXECU
+*RED
+*0STA*NN*RG*1RL*0MCS1 67
+*ST4 35 42 67
+ 1)*MDCOГЛACOBAHO
+*MDПPEДCTABИTEЛЬ ЗAKAЗЧИKA N2272
+*/*10C B.И.ПOHOMAPEHKO*/
+ 2)*MDYTBEPЖДAЮ
+*MDPYKOBOДИTEЛЬ ПPEДПPИЯTИЯ
+*/*10C Г.Г.PЯБOB*/
+$
+*0MCS5 63
+*3/
+*MDBЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC "ЭЛЬБPYC 1-KБ"
+*MDOБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE
+*MDTEXHИЧECKИE YCЛOBИЯ
+*MDЛИCT YTBEPЖДEHИЯ
+*MDИЫ.00110-01 28 01-ЛY
+*3/
+*0MCS1 67*ST9 32 40 67
+ 2)*MDПPEДCTABИTEЛИ
+*MDПPEДПPИЯTИЯ-PAЗPAБOTЧИKA
+*/*MDHAЧAЛЬHИK OTДEЛA
+*/*11C B.Ф.TЮPИH
+*2/     ИCПOЛHИTEЛЬ */*11C C.Э.ГOЛOBЧИK
+*2/     HOPMOKOHTPOЛEP */*11C T.П.PYДAЧEHKO
+ $
+*0MCS5 63
+*6/
+*MD1988
+*/*48GЛИTEPA
+*P
+*ST9 31
+ 1)*MDYTBEPЖДEH
+*/*MDИЫ.00110-01 28 01-ЛY
+$
+*5/
+*MDBЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC "ЭЛЬБPYC 1-KБ"
+*MDOБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE
+*MDTEXHИЧECKИE YCЛOBИЯ
+*MDИЫ.00110-01 28 01
+*MD      ЛИCTOB 23
+*18/*MD1988
+*/*48GЛИTEPA
+*2N
+*P*0MCS5 63
+*0STPИЫ.00110-01 28 01
+*3/*MDAHHOTAЦИЯ
+*2SHACTOЯЩИE TEXHИЧECKИE YCЛOBИЯ (TY) PACПPOCTPAHЯЮTCЯ
+ HA OБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE (OCПO)
+ ИЫ.00110-01, ПPEДHAЗHAЧEHHOE ДЛЯ OБECПEЧEHИЯ ПPOXOЖДEHИЯ
+ ЗAДAЧ PAЗЛИЧHOГO HAЗHAЧEHИЯ
+ HA BЫЧИCЛИTEЛЬHOM KOMПЛEKCE
+ (BK) "ЭЛЬБPYC 1-KБ"; PEШEHИЯ ЗAДAЧ B ПAKETHOM, ДИAЛOГOBOM
+ И ДИAЛOГOBO-ПAKETHOM PEЖИMAX, ИCПOЛЬЗYЯ ПPИ ЭTOM TPAHCЛЯTOPЫ
+ C ABTOKOДOB (ABTOKOД ИTM, БEMШ, ACCEMБЛEP, MADLEN) И
+ ЯЗЫKOB BЫCOKOГO YPOBHЯ (AЛГOЛ, ФOPTPAH, ПACKAЛЬ). OБЩИЙ OБ'EM
+ ГOTOBЫX ПPOГPAMM OCПO COCTABЛЯET OKOЛO 600 TЫCЯЧ MAШИHHЫX
+ CЛOB.
+*S OБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE ДOЛЖHO OБECПEЧИBATЬ
+ KPYГЛOCYTOЧHYЮ ЭKCПЛYATAЦИЮ BK "ЭЛЬБPYC 1-KБ" B HOPMAЛЬHЫX
+ KЛИMATИЧECKИX YCЛOBИЯX B COOTBETCTBИИ C TPEБOBAHИЯMИ
+ ГOCT 16325-76.
+*S OCПO ПOCTABЛЯETCЯ ПOЛЬЗOBATEЛЯM HA MAГHИTHЫX ЛEHTAX (MЛ).
+*S ПPИMEP ЗAПИCИ OБOЗHAЧEHИЯ ПPOГPAMMЫ ПPИ ЗAKAЗE:
+*S "ИЫ.00110-01. BЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC "ЭЛЬБPYC 1-KБ".
+*S OБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE".
+*S ПPИMEP ЗAПИCИ OБOЗHAЧEHИЯ ПPOГPAMMЫ B ДOKYMEHTAЦИИ
+ ДPYГOЙ ПPOДYKЦИИ:
+*S "BЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC "ЭЛЬБPYC 1-KБ",
+*S OБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE. ИЫ.00110-01".
+*S HACTOЯЩИE TY ПPEДHAЗHAЧEHЫ ДЛЯ PAБOTHИKOB ПPEДПPИЯTИЯ-
+ ИЗГOTOBИTEЛЯ, OTДEЛA TEXHИЧECKOГO KOHTPOЛЯ (OTK),
+ ПPEДCTABИTEЛEЙ ЗAKAЗЧИKA И OПPEДEЛЯET HEOБXOДИMЫE
+ TEXHИЧECKИE TPEБOBAHИЯ ПO ИЗГOTOBЛEHИЮ, ИCПЫTAHИЯM,
+ ПPИEMKE И ПOCTABKE OCПO.
+*P*1RL
+*0MCS5 63
+*3/*MDCOДEPЖAHИE
+*ST5 56 58 63
+ 1)*2/*5G1. TEXHИЧECKИE TPEБOBAHИЯ*F  2)*2/ 4
+1)*/*7G1.1. OБЩИE TPEБOBAHИЯ*F  2)*/ 4
+1) */*7G1.2. KOMПЛEKTHOCTЬ*F  2)*/ 5
+1) */*7G1.3. MAPKИPOBKA*F  2)*/ 6
+1) */*7G1.4. YПAKOBKA*F  2)*/ 7
+ 1)*/*5G2. ПPABИЛA ПPИEMKИ*F  2)*/ 8
+1)*/*7G2.1. OБЩИE ПOЛOЖEHИЯ*F  2)*/ 8
+1)*/*7G2.2. ПPИEMO-CДATOЧHЫE ИCПЫTAHИЯ*F  2)*/ 9
+ 1)*/*5G3. METOДЫ KOHTPOЛЯ*F  2)*/12
+1)*/*7G3.1. ПPOBEPKA HA COOTBETCTBИE OБЩИM
+1)*/*7GTPEБOBAHИЯM*F  2)*/12
+1)*/*7G3.2. ПPOBEPKA KOMПЛEKTHOCTИ*F  2)*/14
+1)*/*7G3.3. ПPOBEPKA MAPKИPOBKИ*F  2)*/14
+1)*/*7G3.4. ПPOBEPKA YПAKOBKИ*F  2)*/15
+ 1)*/*5G4. TИПOBЫE ИCПЫTAHИЯ*F  2)*/16
+ 1)*/*5G5. YKAЗAHИЯ ПO ЭKCПЛYATAЦИИ И XPAHEHИЮ*F  2)*/17
+ 1)*/*5G6. ГAPAHTИИ ПOCTABЩИKA*F  2)*/18
+1)*/*5GПPИЛOЖEHИE. ПOДCЧET KOHTPOЛЬHЫX CYMM MЛ*F  2)*/19
+1)*/*5GПEPEЧEHЬ COKPAЩEHИЙ*F  2)*/20
+1)*/*5GПEPEЧEHЬ CCЫЛOЧHЫX ДOKYMEHTOB*F  2)*/21
+1)*/*5GЛИCT PEГИCTPAЦИИ ИЗMEHEHИЙ*F  2)*/22
+$
+*P*2/*MD1. TEXHИЧECKИE TPEБOBAHИЯ
+*2S1.1. OБЩИE TPEБOBAHИЯ
+*2S1.1.1. OБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE BK
+ "ЭЛЬБPYC 1-KБ" ДOЛЖHO COOTBETCTBOBATЬ TPEБOBAHИЯM
+ HACTOЯЩИX TY И ИЗГOTABЛИBATЬCЯ B COOTBETCTBИИ C
+ TEXHOЛOГИЧECKOЙ ДOKYMEHTAЦИEЙ, YTBEPЖДEHHOЙ B YCTAHOBЛEHHOM
+ HA ПPEДПPИЯTИИ-ИЗГOTOBИTEЛE OCПO ПOPЯДKE.
+*S1.1.2. ДЛЯ ИЗГOTOBЛEHИЯ OCПO ДOЛЖHЫ ИCПOЛЬЗOBATЬCЯ
+ CЛEДYЮЩИE TИПЫ MAГHИTHЫX HOCИTEЛEЙ (MH):
+*S MAГHИTHAЯ ЛEHTA TИПA B4502-12 ГOCT 20958-80.
+ ПO COГЛACOBAHИЮ C ПPEДCTABИTEЛEM ЗAKAЗЧИKA MOГYT
+ ИCПOЛЬЗOBATЬCЯ И ДPYГИE TИПЫ MAГHИTHЫX HOCИTEЛEЙ,
+ AHAЛOГИЧHЫE BЫШEПPИBEДEHHЫM ПO TEXHИЧECKИM XAPAKTEPИCTИKAM.
+*S1.1.3. MAГHИTHЫE HOCИTEЛИ ДOЛЖHЫ YДOBЛETBOPЯTЬ
+ TPEБOBAHИЯM ДEЙCTBYЮЩИX HA HИX CTAHДAPTOB И TY
+ И ДOЛЖHЫ БЫTЬ ПPИHЯTЫ B YCTAHOBЛEHHOM  HA
+ ПPEДПPИЯTИЯX-ИЗГOTOBИTEЛЯX MAГHИTHЫX HOCИTEЛEЙ
+ ПOPЯДKE, KAЧECTBO MAГHИTHЫX HOCИTEЛEЙ ДOЛЖHO БЫTЬ
+ ПOДTBEPЖДEHO COOTBETCTBYЮЩИMИ KЛEЙMAMИ, ПACПOPTAMИ,
+ CEPTИФИKATAMИ KAЧECTBA ПPEДПPИЯTИЙ-ИЗГOTOBИTEЛEЙ.
+*S MAГHИTHЫE HOCИTEЛИ ПEPEД ЗAПИCЬЮ HA HИX OCПO ДOЛЖHЫ
+ ПPOЙTИ BXOДHOЙ KOHTPOЛЬ B YCTAHOBЛEHHOM ПOPЯДKE HA
+ ПPEДПPИЯTИИ-ИЗГOTOBИTEЛE OCПO, COГЛACOBAHHOM C
+ ПPEДCTABИTEЛEM ЗAKAЗЧИKA.
+*S1.1.4. CPOK XPAHEHИЯ MAГHИTHЫX HOCИTEЛEЙ C MOMEHTA ИX
+ ИЗГOTOBЛEHИЯ ДO MOMEHTA ЗAПИCИ ИHФOPMAЦИИ HA HИX HE ДOЛЖEH
+ ПPEBЫШATЬ 18 MECЯЦEB.
+*S1.1.5. TEXHOЛOГИЧECKИЙ ПPOЦECC ИЗГOTOBЛEHИЯ OCПO ДOЛЖEH
+ COOTBETCTBOBATЬ COГЛACOBAHHOЙ И YTBEPЖДEHHOЙ B YCTAHOBЛEHHOM
+ ПOPЯДKE ИHCTPYKЦИИ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ И OБECПEЧИBATЬ
+ COOTBETCTBИE ПAPAMETPOB MAГHИTHЫX HOCИTEЛEЙ C ЗAПИCAHHЫMИ
+ HA HИX ПPOГPAMMAMИ И ДOKYMEHTAMИ HA OCПO ДEЙCTBYЮЩИM
+ HOPMATИBHO-TEXHИЧECKИM ДOKYMEHTAM.
+*S1.1.6. KOПИИ, ДYБЛИKATЫ И ПOДЛИHHИKИ OCПO, PACПOЛOЖEHHЫE
+ HA MH, ДOЛЖHЫ БЫTЬ ИДEHTИЧHЫ.
+*S1.1.7. ИЗГOTOBЛEHHЫЙ ЭKЗEMПЛЯP OCПO ДOЛЖEH БЫTЬ ПOДBEPГHYT
+ KOHTPOЛЮ HA ПPABИЛЬHOCTЬ ЗAПИCИ HA MAГHИTHЫE HOCИTEЛИ ПYTEM
+ CЧИTЫBAHИЯ CO CBEPKOЙ KOHTPOЛЬHЫX CYMM (KC).
+*S1.1.8. KOПИИ OCПO ДOЛЖHЫ CHИMATЬCЯ TOЛЬKO C ДYБЛИKATA.
+*S ДYБЛИKATЫ OCПO ДOЛЖHЫ ПPOBEPЯTЬCЯ HA COXPAHHOCTЬ
+ KOHTPOЛЬHЫX CYMM HE
+ PEЖE OДHOГO PAЗA B ГOД, O ЧEM ДOЛЖHЫ ИMETЬCЯ COOTBETCBYЮЩИE
+ OTMETKИ B ФOPMYЛЯPAX ДYБЛИKATOB OCПO.
+*S1.1.9. ЭKCПЛYATAЦИOHHЫE ПPOГPAMMHЫE ДOKYMEHTЫ HA OCПO,
+ ИЗГOTOBЛEHHЫE HA БYMAЖHOM HOCИTEЛE, HE ДOЛЖHЫ ИMETЬ ДEФEKTOB
+ ПEЧATИ ПOCЛE ИX ИЗГOTOBЛEHИЯ И ДOЛЖHЫ COOTBETCTBOBATЬ
+ BEДOMOCTИ ЭKCПЛYATAЦИOHHЫX ДOKYMEHTOB.
+*2S1.2. KOMПЛEKTHOCTЬ
+*2S KOMПЛEKTHOCTЬ ПOCTABKИ OCПO BK "ЭЛЬБPYC 1-KБ" ДOЛЖHA
+ COOTBETCTBOBATЬ COCTABY, YKAЗAHHOMY B TAБЛ. 1.
+OCПO И ПPOГPAMMHAЯ ДOKYMEHTAЦИЯ ПOCTABЛЯЮTCЯ HA ЧETЫPEX
+MAГHИTHЫX ЛEHTAX MЛ1-MЛ4, MЛ4 HE BXOДИT B KOMПЛEKT
+ЭKCПЛYATAЦИOHHЫX ДOKYMEHTOB.
+*/         COCTAB MAГHИTHЫX ЛEHT:
+*/ MЛ1  - ПPOГPAMMA ПEPEПИCИ C MЛ B OП И ГП OC ДИCПAK;
+*/ MЛ2  - CИCTEMЫ ПPOГPAMMИPOBAHИЯ PEЖИMA COBMECTИMOCTИ;
+*/ MЛ3  - CИCTEMA ПPOГPAMMИPOBAHИЯ,
+*/        ЭKCПЛYATAЦИOHHAЯ ДOKYMEHTAЦИЯ;
+*/ MЛ4  - TEKCTЫ ПPOГPAMM. ДAHHAЯ MЛ COДEPЖИT OCHOBHЫE
+ЧACTИ ДOKYMEHTOB: "OПEPAЦИOHHAЯ CИCTEMA ДИCПAK. TEKCT ПPOГPAMMЫ"
+ ИЫ.00110-01 12 01 (ФAЙЛЫ 1-2),
+"CИCTEMA ПPOГPAMMИPOBAHИЯ. TEKCT
+*/*DПPOГPAMMЫ" ИЫ.00110-01 12 02 ФAЙЛЫ 3-8), "CИCTEMA ПPOГPAMMИ-
+*/*DPOBAHИЯ.  ACCEMБЛEP.  TEKCT ПPOГPAMMЫ"  ИЫ.00110-01 12 03
+*/*D(ФAЙЛЫ 9-14).
+*3/*0RL
+*/*48GTAБЛИЦA 1
+*/*D------------------------------------------------------------
+*/*D  HAИMEHOBAHИE       I                       IKOЛИ-I
+*/*D                     I       OБOЗHAЧEHИE     I     I ПPИME-
+*/*D  COCTABHOЙ ЧACTИ,   I                       IЧECT-I
+*/*D                     I                       I     I ЧAHИE
+*/*D  ДOKYMEHTA          I                       I BO  I
+*/*D --------------------I-----------------------I-----I-------
+*/*D 1. KOMПЛEKT         I  ИЫ.00110-01 20 01    I  1  I   1
+*/*D ПPOГPAMMHЫX         I                       I     I
+*/*D ДOKYMEHTOB          I                       I     I
+*/*D COГЛACHO            I                       I     I
+*/*D BEДOMOCTИ           I                       I     I
+*/*D ЭKCПЛYATAЦИOHHЫX    I                       I     I
+*/*D ДOKYMEHTOB          I                       I     I
+*/*D 2. KOMПЛEKT ПPOГPAM-I                       I     I HA MAГ-
+*/*D MHЫX ДOKYMEHTOB И   I                       I     I HИTHOЙ
+*/*D TEKCTЫ ПPOГPAMM OCПOI                       I     I ЛEHTE
+*/*D HA MAГHИTHЫX HOCИTE-I                       I     I
+*/*D ЛЯX C HAKЛEEHHЫMИ   I                       I     I
+*/*D ЭTИKETKAMИ          I                       I     I
+*/*D --------------------I-----------------------I-----I-------
+*/*D  3. YПAKOBKA        I    ПЭ4.170.149-17     I  1  I
+*/*D                     I                       I     I
+*1RL
+*2S ПPИMEЧAHИE: 1. ПOCTABЛЯETCЯ HA БYMAЖHOM HOCИTEЛE
+ */
+*3S1.3. MAPKИPOBKA
+*2S1.3.1. MAPKИPOBKA MH C OCПO ДOЛЖHA ПPOИЗBOДИTЬCЯ
+ COГЛACHO ДOKYMEHTAЦИИ HA MAГHИTHЫE ЛEHTЫ B COOTBETCTBИИ
+ C ИHCTPYKЦИEЙ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ OCПO,
+ COГЛACOBAHHOЙ C ПPEДCTABИTEЛEM ЗAKAЗЧИKA.
+*S MAPKИPOBKA HA MAГHИTHЫE ЛEHTЫ ДOЛЖHA OБECПEЧИBATЬ
+ OДHOЗHAЧHYЮ ИДEHTИФИKAЦИЮ KЛACCA OCПO (KOПИЯ,ДYБЛИKAT,
+ ПOДЛИHHИK), A TAKЖE BKЛЮЧATЬ OБOЗHAЧEHИE CПEЦИФИKAЦИИ OCПO,
+ ПOPЯДKOBЫЙ YЧETHЫЙ HOMEP MAГHИTHOГO HOCИTEЛЯ.
+*S1.3.2. OCПO, PACПOЛOЖEHHOE HA MH B ШTATHOЙ (TPAHCПOPTHOЙ)
+ YПAKOBKE, ДOЛЖHO ИMETЬ KЛEЙMA И ПЛOMБЫ B YCTAHOBЛEHHЫX
+ MECTAX, MAPKИPOBKY, OПPEДEЛЯЮЩYЮ COДEPЖИMOE YПAKOBKИ, И
+ COOTBETCTBYЮЩИE ЗAПИCИ B ФOPMYЛЯPE OCПO.
+*S BИД И PACПOЛOЖEHИE MAPKИPOBKИ HA YПAKOBKE YCTAHABЛИBAЮTCЯ B
+ TEXHИЧECKOЙ ДOKYMEHTAЦИИ HA YПAKOBKY ЗABOДOM-ИЗГOTOBИTEЛEM
+ YПAKOBKИ И ПPEДCTABИTEЛEM ЗAKAЗЧИKA.
+*S1.3.3. MAPKИPOBKA OCПO,PACПOЛOЖEHHOГO HA MЛ,
+ BKЛЮЧAЯ MAPKИPOBKY YПAKOBKИ, ДOЛЖHA COXPAHЯTЬCЯ ПOCЛE
+ HAXOЖДEHИЯ B YCЛOBИЯX, ПPEДYCMOTPEHHЫX TEXHИЧECKOЙ
+ ДOKYMEHTAЦИEЙ HA YПAKOBKY И ДOЛЖHA COOTBETCTBOBATЬ
+ ДOKYMEHTAЦИИ HA TAPY.
+*2S1.4. YПAKOBKA
+*2S1.4.1. YПAKOBKA OCПO ДOЛЖHA ПPOИЗBOДИTЬCЯ B COOTBETCTBИИ
+ C ИHCTPYKЦИEЙ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ, COГЛACOBAHHOЙ
+ И YTBEPЖДEHHOЙ B YCTAHOBЛEHHOM ПOPЯДKE.
+*S1.4.2. YПAKOBKA OCПO ДOЛЖHA OБECПEЧИBATЬ COXPAHHOCTЬ
+ ЭKCПЛYATAЦИOHHOЙ ДOKYMEHTAЦИИ И MH ПPИ XPAHEHИИ И
+ COOTBETCTBOBATЬ TPEБOBAHИЯM ГOCT 20958-80.
+*P
+*3/*MD2. ПPABИЛA ПPИEMKИ
+*2S2.1. OБЩИE ПOЛOЖEHИЯ
+*2S2.1.1. ИCПЫTAHИЯ OCПO HA COOTBETCTBИE TPEБOBAHИЯM
+ HACTOЯЩИX TY ПPOBOДИT ПPEДCTABИTEЛЬ ЗAKAЗЧИKA C YЧACTИEM OTK
+ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ HA OБOPYДOBAHИИ, HA KOTOPOE
+ ИMEETCЯ ДOKYMEHTAЦИЯ, ПOДTBEPЖДAЮЩAЯ EГO ГOTOBHOCTЬ K
+ ИCПЫTAHИЯM.
+*S2.1.2. ПPEДПPИЯTИE-ИЗГOTOBИTEЛЬ OБЯЗAHO OБECПEЧИTЬ ПPEДCTABИTEЛЯ
+ ЗAKAЗЧИKA KOMПЛEKTOM YЧTEHHOЙ ДOKYMEHTAЦИИ HA OCПO.
+*S2.1.3. OCПO, ПPEД'ЯBЛЯEMOE ПPEДCTABИTEЛЮ ЗAKAЗЧИKA,
+ ДOЛЖHO БЫTЬ ПPИHЯTO B OБ'EME HACTOЯЩИX TY OTK
+ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ И ИMETЬ KЛEЙMA HA MH ИЛИ
+ ЭTИKETKE MH, HA YПAKOBKE И B ДOKYMEHTAЦИИ.
+*S2.1.4. ДЛЯ ПPOBEPKИ COOTBETCTBИЯ OCПO TPEБOBAHИЯM
+ HACTOЯЩИX TY YCTAHABЛИBAЮTCЯ ПPИEMO-CДATOЧHЫE
+ ИCПЫTAHИЯ.
+*S2.1.5. ИCПЫTAHИЯ OCПO ПPOBOДЯTCЯ B HOPMAЛЬHЫX
+ KЛИMATИЧECKИX YCЛOBИЯX:
+*S TEMПEPATYPA OKPYЖAЮЩEГO BOЗДYXA ( 25+-10 ) O C;
+*S OTHOCИTEЛЬHAЯ BЛAЖHOCTЬ OKPYЖAЮЩEГO BOЗДYXA (65+-15) %;
+*S ATMOCФEPHOE ДABЛEHИE (1000+-40) ГПA .
+*S2.1.6. ИCПЫTAHИЯ MH C OCПO ПPOBOДЯTCЯ HA YCTPOЙCTBAX,
+ BXOДЯЩИX B COCTAB BK "ЭЛЬБPYC 1-KБ".
+*S2.1.7. ФOPMЫ ДOKYMEHTOB, ДEЙCTBYЮЩИE HA
+ ПPEДПPИЯTИИ-ИЗГOTOBИTEЛE И ПPИMEHЯEMЫE BO BCEX BИДAX ИCПЫTAHИЙ
+ OCПO, ДOЛЖHЫ БЫTЬ COГЛACOBAHЫ C ПPEДCTABИTEЛEM ЗAKAЗЧИKA.
+*2S2.2. ПPИEMO-CДATOЧHЫE ИCПЫTAHИЯ
+*2S2.2.1. ПPИEMO-CДATOЧHЫE ИCПЫTAHИЯ ПPOBOДЯT ДЛЯ ПPOBEPKИ
+ KAЖДOГO ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA OCПO HA COOTBETCTBИE
+ TPEБOBAHИЯM HACTOЯЩИX TY.
+*S2.2.2. COCTAB И ПOCЛEДOBATEЛЬHOCTЬ ПPИEMO-CДATOЧHЫX
+ ИCПЫTAHИЙ ПPИBEДEHЫ B TAБЛ. 2.
+*/*48GTAБЛИЦA 2
+*0RL
+*/*D------------------------------------------------------------
+*/*D                                     I   HOMEPA ПYHKTOB
+*/*D         HAИMEHOBAHИЯ ИCПЫTAHИЙ      I---------------------
+*/*D                                     ITEXHИЧECKИXI METOДOB
+*/*D              И ПPOBEPOK             I           I
+*/*D                                     ITPEБOBAHИЙ IИCПЫTAHИЙ
+*/*D ------------------------------------I-----------I---------
+*/*D 1. ПPOBEPKA KOMПЛEKTHOCTИ           I   1.2.    I  3.2.
+*/*D ------------------------------------I-----------I---------
+*/*D 2. ПPOBEPKA ПPИMEHEHHOГO TИПA       I   1.1.2.  I  3.1.1.
+*/*D                                     I           I
+*/*D    MAГHИTHOГO HOCИTEЛЯ              I           I
+*/*D ------------------------------------I-----------I---------
+*/*D 3. ПPOBEPKA COOTBETCTBИЯ MAГHИTHOГO I   1.1.3.  I  3.1.2.
+*/*D                                     I           I
+*/*D    HOCИTEЛЯ ДAHHЫX TPEБOBAHИЯM      I           I
+*/*D                                     I           I
+*/*D    CTAHДAPTOB И TY                  I           I
+*/*D ------------------------------------I-----------I---------
+*/*D 4. ПPOBEPKA CPOKA XPAHEHИЯ MAГHИT-  I   1.1.4.  I  3.1.3.
+*/*D                                     I           I
+*/*D    HOГO HOCИTEЛЯ                    I           I
+*/*D ------------------------------------I-----------I---------
+*/*D 5. ПPOBEPKA TEXHOЛOГИЧECKOГO ПPO-   I   1.1.5.  I  3.1.4.
+*/*D                                     I           I
+*/*D    ЦECCA ИЗГOTOBЛEHИЯ OCПO          I           I
+*/*D ------------------------------------I-----------I---------
+*/*D 6. ПPOBEPKA KOHTPOЛЬHЫX CYMM        I   1.1.7.  I  3.1.5.
+*/*D ------------------------------------I-----------I---------
+*/*D 7. ПPOBEPKA COOTBETCTBИЯ KOПИИ      I   1.1.8.  I
+*/*D                                     I           I
+*/*D    ДYБЛИKATY OCПO                   I   1.1.6.  I  3.1.6.
+*/*D ------------------------------------I-----------I---------
+*/*D 8. ПPOBEPKA KAЧECTBA ЭKCПЛYATAЦИOH- I   1.1.9.  I  3.1.7.
+*/*D                                     I           I
+*/*D    HЫX ДOKYMEHTOB                   I           I
+*/*D ----------------------------------------------------------
+*/*D 9. ПPOBEPKA KAЧECTBA MAPKИPOBKИ И   I   1.3.1.  I  3.3.1.
+*/*D                                     I           I
+*/*D    OПЛOMБИPOBAHИЯ                   I   1.3.2.  I  3.3.2.
+*/*D                                     I           I
+*/*D                                     I   1.3.3.  I  3.3.3.
+*/*D ------------------------------------I-----------I---------
+*/*D 10. ПPOBEPKA KAЧECTBA YПAKOBKИ      I   1.4.    I  3.4.
+*1RL
+*2S2.2.3. O ГOTOBHOCTИ OCПO K ИCПЫTAHИЯM
+ ПPEДПPИЯTИE-ИЗГOTOBИTEЛЬ ДOЛЖHO YBEДOMИTЬ ПPEДCTABИTEЛЯ
+ ЗAKAЗЧИKA "ИЗBEЩEHИEM", OФOPMЛEHHЫM B YCTAHOBЛEHHOM HA
+ ПPEДПPИЯTИИ-ИЗГOTOBИTEЛE ПOPЯДKE.
+*S K "ИЗBEЩEHИЮ" ДOЛЖHЫ БЫTЬ ПPИЛOЖEHЫ CЛEДYЮЩИE ДOKYMEHTЫ:
+*S ЗAПOЛHEHHЫЙ ФOPMYЛЯP HA OCПO;
+*S KOMПЛEKT ПPOГPAMMHЫX ДOKYMEHTOB HA OCПO.
+*S2.2.4. ПPИ OБHAPYЖEHИИ B ПPOЦECCE ПPИEMO-CДATOЧHЫX
+ ИCПЫTAHИЙ HECOOTBETCTBИЯ OCПO XOTЯ БЫ OДHOMY TPEБOBAHИЮ
+ HACTOЯЩИX TY, ЭTOT ЭKЗEMПЛЯP OCПO CЧИTAЮT HE BЫДEPЖABЩИM
+ ИCПЫTAHИЯ И BOЗBPAЩAЮT ПPEДПPИЯTИЮ-ИЗГOTOBИTEЛЮ ДЛЯ
+ AHAЛИЗA ПPИЧИH ДEФEKTOB, ИX YCTPAHEHИЯ И ПOBTOPHOЙ
+ ПPOBEPKИ ЭTOГO ЭKЗEMПЛЯPA OCПO OTK.
+*S ПPИ BOЗBPATE OCПO ПPEДCTABИTEЛЬ ЗAKAЗЧИKA ДOЛЖEH
+ COCTABИTЬ ЗAKЛЮЧEHИE C ИЗЛOЖEHИEM ПPИЧИH BOЗBPATA И
+ OЗHAKOMИTЬ C HИM HAЧAЛЬHИKA OTK.
+*S2.2.5. BOЗBPAЩEHHЫE ПPEДCTABИTEЛEM ЗAKAЗЧИKA
+ ЭKЗEMПЛЯPЫ OCПO MOГYT БЫTЬ ПOBTOPHO ПPEД'ЯBЛEHЫ K
+ ПPИEMO-CДATOЧHЫM ИCПЫTAHИЯM ПOCЛE AHAЛИЗA ПPИЧИH ДEФEKTOB,
+ ИX YCTPAHEHИЯ И ПOBTOPHOЙ ПPOBEPKИ OTK.
+*S2.2.6. ПPИEMKY ЭKЗEMПЛЯPA OCПO, BOЗBPAЩEHHOГO ПPEДCTABИTEЛEM
+ ЗAKAЗЧИKA, ДOПYCKAETCЯ BOЗOБHOBЛЯTЬ TOЛЬKO ПPИ ПOBTOPHOM
+ ПPEД'ЯBЛEHИИ "ИЗBEЩEHИЯ", HA KOTOPOM ДOЛЖHA БЫTЬ HAДПИCЬ
+ "BTOPИЧHOE".
+*S BTOPИЧHOE ИЗBEЩEHИE ДOЛЖHO БЫTЬ ПOДПИCAHO PYKOBOДИTEЛEM
+ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ.
+*S K "ИЗBEЩEHИЮ" ДOЛЖEH ПPИЛAГATЬCЯ AKT OБ AHAЛИЗE ДEФEKTOB,
+ ИX YCTPAHEHИИ И ПOBTOPHOЙ ПPOBEPKE OTK ЭKЗEMПЛЯPA OCПO,
+ BOЗBPAЩEHHOГO ПPEДCTABИTEЛEM ЗAKAЗЧИKA, C YKAЗAHИEM ПPИЧИH
+ ДEФEKTOB И MEP ПO ИX YCTPAHEHИЮ.
+*S ПEPEЧEHЬ MEPOПPИЯTИЙ ПO YCTPAHEHИЮ И ПPEДYПPEЖДEHИЮ
+ ДEФEKTOB ДOЛЖEH БЫTЬ COГЛACOBAH C ПPEДCTABИTEЛEM ЗAKAЗЧИKA.
+*S2.2.7. ПOBTOPHЫE ИCПЫTAHИЯ BOЗBPAЩEHHЫX ПPEДCTABИTEЛEM
+ ЗAKAЗЧИKA ЭKЗEMПЛЯPOB OCПO ПPOBOДЯTCЯ B ПOЛHOM OБ'EME,
+ YCTAHOBЛEHHOM ДЛЯ ПPИEMO-CДATOЧHЫX ИCПЫTAHИЙ.
+*S2.2.8. ECЛИ ПPИ ПOBTOPHЫX ИCПЫTAHИЯX БYДET OБHAPYЖEHO
+ HECOOTBETCTBИE ЭKЗEMПЛЯPA OCПO TPEБOBAHИЯM TY, TO
+ ИCПЫTAHИЯ ДOЛЖHЫ БЫTЬ ПPEKPAЩEHЫ, A ЭKЗEMПЛЯP OCПO BOЗBPAЩEH
+ ПPEДПPИЯTИЮ-ИЗГOTOBИTEЛЮ.
+*S BOЗMOЖHOCTЬ ДAЛЬHEЙШEГO TИPAЖИPOBAHИЯ И ПPИEMKИ OCПO
+ PEШAЮT PYKOBOДИTEЛЬ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ COBMECTHO C
+ ПPEДCTABИTEЛEM ЗAKAЗЧИKA И HAЧAЛЬHИKOM OTK.
+*S2.2.9. HA ЭKЗEMПЛЯPE OCПO ( MH ИЛИ ЭTИKETKE MH,YПAKOBKE ),
+ ПPИHЯTOM OTK И ПPEДCTABИTEЛEM ЗAKAЗЧИKA, ДOЛЖHЫ БЫTЬ
+ ПOCTABЛEHЫ KЛEЙMA И ПЛOMБЫ B ПPEДYCMOTPEHHЫX MECTAX И
+ CДEЛAHЫ COOTBETCTBYЮЩИE ЗAПИCИ B ФOPMYЛЯPE OCПO.
+*S2.2.10. OKOHЧATEЛЬHO ПPИHЯTЫM И ПOДЛEЖAЩИM OTГPYЗKE
+ CЧИTAETCЯ OCПO, KOTOPOE ПO PEЗYЛЬTATAM ИCПЫTAHИЙ
+ COOTBETCTBYET TPEБOBAHИЯM HACTOЯЩИX TY, YПAKOBAHO,
+ OПЛOMБИPOBAHO OTK И ПPEДCTABИTEЛEM ЗAKAЗЧИKA И CДAHO
+ HA OTBETCTBEHHOE XPAHEHИE ПPEДПPИЯTИЮ-ИЗГOTOBИTEЛЮ OCПO.
+*P*2/*MD3. METOДЫ KOHTPOЛЯ
+*2S3.1. ПPOBEPKA HA COOTBETCTBИE OБЩИM TPEБOBAHИЯM
+*2S3.1.1. ПPOBEPKA COOTBETCTBИЯ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA
+ TPEБOBAHИЯM HACTOЯЩИX TY ПPOBOДИTCЯ BHEШHИM OCMOTPOM
+ MAГHИTHЫX HOCИTEЛEЙ.
+*S ПPOBEPKOЙ ДOЛЖHO БЫTЬ ПOДTBEPЖДEHO, ЧTO ПPИMEHEHЫ
+ PAЗPEШEHHЫE BИДЫ И TИПЫ MAГHИTHЫX HOCИTEЛEЙ.
+*S3.1.2. ПPOBEPKA COOTBETCTBИЯ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA
+ TPEБOBAHИЯM П.1.1.3 HACTOЯЩИX TY ПPOBOДИTCЯ BHEШHИM
+ OCMOTPOM MAГHИTHЫX HOCИTEЛEЙ И PACCMOTPEHИEM
+ OTMETKИ BXOДHOГO KOHTPOЛЯ MAГHИTHЫX HOCИTEЛEЙ.
+*S ПPOBEPKOЙ ДOЛЖHO БЫTЬ YCTAHOBЛEHO HAЛИЧИE
+ COOTBETCTBYЮЩИX KЛEЙM ПPEДПPИЯTИЙ-ИЗГOTOBИTEЛEЙ
+ MAГHИTHЫX HOCИTEЛEЙ, A OTMETKOЙ BXOДHOГO KOHTPOЛЯ
+ ПOДTBEPЖДAETCЯ KOHДИЦИOHHOCTЬ MAГHИTHЫX HOCИTEЛEЙ.
+*S3.1.3. ДЛЯ OЦEHKИ COOTBETCTBИЯ ИЗГOTOBЛEHHOГO
+ ЭKЗEMПЛЯPA TPEБOBAHИЯM П.1.1.4 HACTOЯЩИX TY YCTAHABЛИBAETCЯ
+ ФAKTИЧECKИЙ CPOK XPAHEHИЯ MAГHИTHЫX HOCИTEЛEЙ, KOTOPЫЙ
+ ИCЧИCЛЯETCЯ OT ДATЫ ИЗГOTOBЛEHИЯ MAГHИTHOГO HOCИTEЛЯ ДO
+ ДATЫ ЗAПИCИ HA HEГO ИHФOPMAЦИИ.
+*S CPOK XPAHEHИЯ MAГHИTHЫX HOCИTEЛEЙ HE ДOЛЖEH ПPEBЫШATЬ
+ 18 MECЯЦEB.
+*S3.1.4. ПPOBEPKA COOTBETCTBИЯ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA
+ П.1.1.5 HACTOЯЩИX TY ПPOИЗBOДИTCЯ C ПOMOЩЬЮ KOHTPOЛЬHЫX
+ ПPOBEPOK OTK И ПPEДCTABИTEЛЯ ЗAKAЗЧИKA TEXHOЛOГИЧECKOГO
+ ПPOЦECCA ИЗГOTOBЛEHИЯ ДAHHOГO ЭKЗEMПЛЯPA.
+*S PEЗYЛЬTAT ПOCЛEДHEЙ KOHTPOЛЬHOЙ ПPOBEPKИ ДOЛЖEH
+ ПOДTBEPЖДATЬ COOTBETCTBИE TEXHOЛOГИЧECKOГO ПPOЦECCA
+ COГЛACOBAHHOЙ И YTBEPЖДEHHOЙ ИHCTPYKЦИИ.
+*S3.1.5. ПPOBEPKA ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA,
+ PACПOЛOЖEHHOГO HA MH, HA COOTBETCTBИE TPEБOBAHИЯM
+ П.1.1.7 HACTOЯЩИX TY ПPOИЗBOДИTCЯ ПOДCЧETOM KC ПO
+ METOДИKE, ИЗЛOЖEHHOЙ B ПPИЛOЖEHИИ.
+*S ПOЛYЧEHHЫE KOHTPOЛЬHЫE CYMMЫ ДOЛЖHЫ COBПAДATЬ C
+ KOHTPOЛЬHЫMИ CYMMAMИ, KOTOPЫE ЗAФИKCИPOBAHЫ B
+ ФOPMYЛЯPE OCПO.
+*S B CЛYЧAE HECOBПAДEHИЯ XOTЯ БЫ OДHOЙ ИЗ KOHTPOЛЬHЫX
+ CYMM C KOHTPOЛЬHOЙ CYMMOЙ, ЗAФИKCИPOBAHHOЙ B ФOPMYЛЯPE
+ OCПO, ДOЛЖEH БЫTЬ ПPOИЗBEДEH TPEXKPATHЫЙ ПOДCЧET
+ KOHTPOЛЬHЫX CYMM.
+*S ПPИ HECOBПAДEHИИ KOHTPOЛЬHЫX CYMM C KOHTPOЛЬHЫMИ
+ CYMMAMИ, ЗAФИKCИPOBAHHЫMИ B ФOPMYЛЯPE OCПO ( ИЛИ
+ ПPИ HECTAБИЛЬHOM ПOЛYЧEHИИ ИX ЗHAЧEHИЙ ) ПOCЛE
+ TPEXKPATHOГO ПOДCЧETA, CЧИTAETCЯ, ЧTO ИЗГOTOBЛEHHЫЙ
+ ЭKЗEMПЛЯP OCПO HE COOTBETCTBYET TPEБOBAHИЯM П.1.1.7
+ HACTOЯЩИX TY И ПOДЛEЖИT BOЗBPATY ДЛЯ AHAЛИЗA ПPИЧИH
+ ДEФEKTOB, ИX YCTPAHEHИЯ И ПEPEПPOBEPKИ OTK.
+*S3.1.6. ПPOBEPKA COOTBETCTBИЯ ИЗГOTABЛИBAEMOГO HA
+ MAГHИTHЫX HOCИTEЛЯX ЭKЗEMПЛЯPA TPEБOBAHИЯM П.1.1.6,
+ П.1.1.8 HACTOЯЩИX TY ПPOИЗBOДИTCЯ CPABHEHИEM ПOЛYЧEHHЫX
+ KOHTPOЛЬHЫX CYMM C KOHTPOЛЬHЫMИ CYMMAMИ, KOTOPЫE
+ ЗAПИCAHЫ B ФOPMYЛЯPE HA ДAHHЫЙ ЭKЗEMПЛЯP.
+*S ПOЛYЧEHHЫE KOHTPOЛЬHЫE CYMMЫ ДOЛЖHЫ COBПAДATЬ C
+ ЗAФИKCИPOBAHHЫMИ B ФOPMYЛЯPE.
+*S3.1.7. ПPOBEPKA COOTBETCTBИЯ ПPOГPAMMHЫX ДOKYMEHTOB
+ TPEБOBAHИЯM П.1.1.9 HACTOЯЩИX TY ПPOBOДИTCЯ BHEШHИM
+ OCMOTPOM, ПPEД'ЯBЛEHHЫX HA ИCПЫTAHИЯ ЭKCПЛYATAЦИOHHЫX
+ ДOKYMEHTOB OCПO, BЫПOЛHEHHЫX HA БYMAЖHOM HOCИTEЛE.
+*S ПPOBEPKOЙ ДOЛЖHO БЫTЬ YCTAHOBЛEHO, ЧTO ПOCЛE
+ ИЗГOTOBЛEHИЯ OHИ HE ИMEЮT ДEФEKTOB.
+*2S3.2. ПPOBEPKA KOMПЛEKTHOCTИ
+*2S ПPOBEPKA COOTBETCTBИЯ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA
+ TPEБOBAHИЯM П.1.2 HACTOЯЩИX TY ПPOИЗBOДИTCЯ CPABHEHИEM
+ ПPEД'ЯBЛEHHOГO HA ИCПЫTAHИЯ KOMПЛEKTA OCПO C COCTABOM,
+ YKAЗAHHЫM B TAБЛ.1 TY И B ФOPMYЛЯPE OCПO.
+*S KOMПЛEKTHOCTЬ, YKAЗAHHAЯ B TY И ФOPMYЛЯPE, ДOЛЖHA
+ ИMETЬCЯ B HAЛИЧИИ.
+*2S3.3. ПPOBEPKA MAPKИPOBKИ
+*2S3.3.1. ПPOBEPKA COOTBETCTBИЯ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA,
+ PACПOЛOЖEHHOГO HA MЛ, TPEБOBAHИЯM П.1.3.1 HACTOЯЩИX TY
+ ПPOИЗBOДИTCЯ BHEШHИM OCMOTPOM БOБИH MЛ.
+*S БOБИHЫ MЛ ДOЛЖHЫ ИMETЬ ЭTИKETKY YCTAHOBЛEHHOГO HA
+ ДAHHOM ПPEДПPИЯTИИ-ИЗГOTOBИTEЛE OБPAЗЦA.
+*S3.3.2. ПPOBEPKA COOTBETCTBИЯ OCПO, PACПOЛOЖEHHOГO HA
+ MЛ, TPEБOBAHИЯM П.1.3.2 HACTOЯЩИX TY ПPOИЗBOДИTCЯ
+ BHEШHИM OCMOTPOM ШTATHOЙ YПAKOBKИ.
+*S MAPKИPOBKA ШTATHOЙ YПAKOBKИ ДOЛЖHA COOTBETCTBOBATЬ
+ ИHCTPYKЦИИ ПPEДПPИЯTИЯ-ИЗГOTOBИTEЛЯ, A MAPKИPOBKA
+ TPAHCПOPTHOЙ YПAKOBKИ ДOЛЖHA COOTBETCTBOBATЬ TEXHИЧECKOЙ
+ ДOKYMEHTAЦИИ HA YПAKOBKY ЗABOДA-ИЗГOTOBИTEЛЯ YПAKOBKИ.
+*S3.3.3. ПPOBEPKA COOTBETCTBИЯ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA,
+ PACПOЛOЖEHHOГO HA MЛ, TPEБOBAHИЯM П.1.1.3. HACTOЯЩИX TY
+ ПPOИЗBOДИTCЯ BHEШHИM OCMOTPOM MЛ И YПAKOBKИ.
+*S ПPИ BHEШHEM OCMOTPE MAPKИPOBKИ MЛ И YПAKOBKИ MAPKИPOBKA
+ ДOЛЖHA COOTBETCTBOBATЬ TEXHИЧECKOЙ ДOKYMEHTAЦИИИ HA
+ YПAKOBKY.
+*P*2S3.4. ПPOBEPKA YПAKOBKИ
+*2S ПPOBEPKA COOTBETCTBИЯ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA
+ TPEБOBAHИЯM П.1.4 HACTOЯЩИX TY ПPOИЗBOДИTCЯ BHEШHИM
+ OCMOTPOM EГO YПAKOBKИ.
+*S YПAKOBKA ДOЛЖHA БЫTЬ ПPOИЗBEДEHA B COOTBETCTBИИ C
+ TPEБOBAHИЯMИ, ИЗЛOЖEHHЫMИ B ДOKYMEHTAЦИИ HA TAPY.
+*P*2/*MD4. TИПOBЫE ИCПЫTAHИЯ
+*2S4.1. TИПOBЫE ИCПЫTAHИЯ OCПO ПPOBOДЯT B CЛEДYЮЩИX ЦEЛЯX:
+ *S1) ДЛЯ OЦEHKИ ЭФФEKTИBHOCTИ И ЦEЛECOOБPAЗHOCTИ ИЗMEHEHИЙ,
+ BHOCИMЫX B OCПO ИЛИ TEXHOЛOГИЮ EГO ИЗГOTOBЛEHИЯ, A TAKЖE
+ ДЛЯ ПPOBEPKИ PAБOTOCПOCOБHOCTИ OCПO ПOCЛE BHECEHИЯ ИЗMEHEHИЙ,
+ KOTOPЫE ЗATPAГИBAЮT EГO ФYHKЦИOHAЛЬHЫE BOЗMOЖHOCTИ И
+ ЭKCПЛYATAЦИOHHЫE XAPAKTEPИCTИKИ;
+*S2) ДЛЯ OЦEHKИ PAБOTOCПOCOБHOCTИ OCПO И OПPEДEЛEHИЯ
+ ЭKCПЛYATAЦИOHHЫX XAPAKTEPИCTИK OCПO ПOCЛE BHECEHИЯ
+ ИЗMEHEHИЙ B AППAPATYPY BK "ЭЛЬБPYC 1-KБ", KOTOPЫE ЗATPAГИBAЮT
+ EГO ФYHKЦИOHAЛЬHЫE BOЗMOЖHOCTИ;
+*S3) ДЛЯ OЦEHKИ PAБOTOCПOCOБHOCTИ И OПPEДEЛEHИЯ ЭKCПЛYATAЦИOHHЫX
+ XAPAKTEPИCTИK ПPИ COЗДAHИИ HOBЫX BEPCИЙ OCПO BK "ЭЛЬБPYC 1-KБ".
+*S HEOБXOДИMOCTЬ ПPOBEДEHИЯ TИПOBЫX ИCПЫTAHИЙ, B ЗABИCИMOCTИ
+ OT XAPAKTEPA ИЗMEHEHИЙ, OПPEДEЛЯЮT ЗAKAЗЧИK ИЛИ ПPEДCTABИTEЛЬ
+ ЗAKAЗЧИKA ПO COГЛACOBAHИЮ C PAЗPAБOTЧИKOM OCПO.
+*S4.2. TИПOBЫE ИCПЫTAHИЯ MOГYT ПPOBOДИTCЯ KAK HA KOПИЯX, TAK И HA
+ ДYБЛИKATAX OCПO, ПOPЯДOK BЫБOPA BИДA И ЭKЗEMПЛЯPA OCПO OПPEДEЛЯET
+ ПPEДПPИЯTИE-PAЗPAБOTЧИK OCПO ПO COГЛACOBAHИЮ C ПPEДCTABИTEЛEM
+ ЗAKAЗЧИKA, ЧTO OФOPMЛЯETCЯ AKTOM.
+*S4.3. TИПOBЫE ИCПЫTAHИЯ OCПO ПPOBOДЯTCЯ ПO ПPOГPAMME И METOДИKE,
+ COCTABЛEHHOЙ ПPEДПPИЯTИEM-PAЗPAБOTЧИKOM OCПO И YTBEPЖДEHHOЙ
+ ГЛABHЫM KOHCTPYKTOPOM ПPEДПPИЯTИЯ-PAЗPAБOTЧИKA OCПO И CTAPШИM
+ ПPEДCTABИTEЛEM ЗAKAЗЧИKA.
+*S4.4. PEЗYЛЬTATЫ TИПOBЫX ИCПЫTAHИЙ OCПO OФOPMЛЯЮTCЯ AKTOM,
+ KOTOPЫЙ YTBEPЖДAETCЯ CTAPШИM ПPEДCTABИTEЛEM ЗAKAЗЧИKA И ГЛABHЫM
+ KOHCTPYKTOPOM ПPEДПPИЯTИЯ-PAЗPAБOTЧИKA OCПO.
+*P*2/*MD5. YKAЗAHИЯ ПO ЭKCПЛYATAЦИИ, TPAHCПOPTИPOBAHИЮ
+*MDИ XPAHEHИЮ
+*2S5.1. BBOД B ЭKCПЛYATAЦИЮ И ЭKCПЛYATAЦИЯ OCПO BK "ЭЛЬБPYC 1-KБ"
+ ДOЛЖHЫ OCYЩECTBЛЯTЬCЯ B COOTBETCTBИИ C ФOPMYЛЯPOM И ЭKCПЛYATAЦИOHHOЙ
+ ДOKYMEHTAЦИEЙ HA OCПO.
+*S5.2. ПOCTABЛЯEMЫE ПOЛЬЗOBATEЛЮ MЛ C PACПOЛOЖEHHЫM HA HИX OCПO
+ ДOЛЖHЫ ИCПOЛЬЗOBATЬCЯ KAK KOHTPOЛЬHЫE ЭKЗEMПЛЯPЫ ДЛЯ ИЗГOTOBЛEHИЯ
+ PAБOЧИX KOПИЙ OCПO, ДЛЯ ЭKCПЛYATAЦИИ ДOЛЖHЫ ИCПOЛЬЗOBATЬCЯ
+ TOЛЬKO PAБOЧИE KOПИИ OCПO HA MЛ.
+*S5.3. OCПO ДOЛЖHO ЭKCПЛYATИPOBATЬCЯ B HOPMAЛЬHЫX KЛИMATИЧECKИX
+ YCЛOBИЯX ПO ГOCT 20958-80.
+*S5.4. OCПO B YПAKOBKE MOЖET TPAHCПOPTИPOBATЬCЯ ЛЮБЫM BИДOM
+ TPAHCПOPTA HA ЛЮБOE PACCTOЯHИE ПPИ YCЛOBИИ ЗAЩИTЫ OT ГPЯЗИ
+  И ATMOCФEPHЫX OCAДKOB, ПPИ KЛИMATИЧECKИX И MEXAHИЧECKИX
+ YCЛOBИЯX TPAHCПOPTИPOBAHИЯ B COOTBETCTBИИ C ГOCT 16325-76 И
+ HTД ЗABOДA-ИЗГOTOBИTEЛЯ (ЗABOДA-ИЗГOTOBИTEЛЯ TAPЫ).
+*S5.5. YПAKOBAHHOE OCПO ДOЛЖHO XPAHИTЬCЯ B ПOMEЩEHИИ ПPИ
+ TEMПEPATYPE OT 5 ГPAДYCOB ДO 40 ГPAДYCOB ЦEЛЬCИЯ, OTHOCИTEЛЬHOЙ
+ BЛAЖHOCTИ BOЗДYXA OT 30% ДO 95%.
+*S5.6. YCЛOBИЯ TPAHCПOPTИPOBAHИЯ И XPAHEHИЯ ИЗГOTOBЛEHHOГO
+ ЭKЗEMПЛЯPA OCПO HA MAГHИTHЫX ЛEHTAX TИПA B4502-12 ИЛИ ДPYГИX
+ TИПOB MЛ C AHAЛOГИЧHЫMИ XAPAKTEPИCTИKAMИ ДOЛЖHЫ COOTBETCTBOBATЬ
+ TPEБOBAHИЯM [1].
+*P*2/*MD6. ГAPAHTИИ ПOCTABЩИKA
+*2S6.1. ПPEДПPИЯTИE-ИЗГOTOBИTEЛЬ OCПO ГAPAHTИPYET COOTBETCTBИE
+ ИЗГOTOBЛEHHOГO ЭKЗEMПЛЯPA OCПO TPEБOBAHИЯM HACTOЯЩИX TY ПPИ
+ YCЛOBИИ EГO BBOДA B ЭKCПЛYATAЦИЮ ПPEДПPИЯTИEM, BЫПOЛHЯЮЩИM
+ PAБOTY
+ ПO BBOДY B ЭKCПЛYATAЦИЮ И OБCЛYЖИBAHИЮ BK "ЭЛЬБPYC 1-KБ", A
+ TAKЖE COБЛЮДEHИЯ ПOЛЬЗOBATEЛEM YCЛOBИЙ ЭKCПЛYATAЦИИ,
+ TPAHCПOPTИPOBAHИЯ И XPAHEHИЯ OCПO, YCTAHOBЛEHHЫX HACTOЯЩИM
+ TY И ЭKCПЛYATAЦИOHHOЙ ДOKYMEHTAЦИEЙ.
+*S ПPИMEЧAHИE. B OPГAHИЗAЦИЯX ЗAKAЗЧИKA ДOПYCKAETCЯ BBOД B
+ ЭKCПЛYATAЦИЮ OCПO CИЛAMИ ПOЛЬЗOBATEЛEЙ BK "ЭЛЬБPYC 1-KБ" ПPИ
+ YCЛOBИИ COБЛЮДEHИЯ ПOPЯДKA XPAHEHИЯ И BBOДA B ЭKCПЛYATAЦИЮ OCПO
+ COГЛACHO ЭKCПЛYATAЦИOHHOЙ ДOKYMEHTAЦИИ HA OCПO.
+*S6.2. ПPEДПPИЯTИE-ИЗГOTOBИTEЛЬ OCПO ГAPAHTИPYET COXPAHHOCTЬ
+ И BOCПPOИЗBEДEHИE OCПO BK "ЭЛЬБPYC 1-KБ" C MAГHИTHЫX HOCИTEЛEЙ
+ B COOTBETCTBИИ C KOHTPOЛЬHЫMИ CYMMAMИ B TEЧEHИИ CPOKA,
+ OПPEДEЛЯEMOГO CPOKOM ДEЙCTBИЯ ГAPAHTИЙHЫX OБЯЗATEЛЬCTB HA BK.
+*S6.3. ДEЙCTBИE ГAPAHTИЙHЫX OБЯЗATEЛЬCTB ПPEKPAЩAETCЯ, ECЛИ
+ B ГAPAHTИЙHЫЙ ПEPИOД ПOЛЬЗOBATEЛЬ BHEC KAKИE-ЛИБO ИЗMEHEHИЯ
+ B TEKCTЫ ПPOГPAMM HA MЛ, ПOCTABЛЯEMЫE ЗABOДOM-ИЗГOTOBИTEЛEM
+ OCПO.
+*P
+*2/*45G ПPИЛOЖEHИE
+*/*MD ПOДCЧET KOHTPOЛЬHЫX CYMM MAГHИTHЫX ЛEHT
+*2S1. KOHTPOЛЬHAЯ CYMMA MЛ1, HA KOTOPOЙ ЗAПИCAHЫ ГOTOBЫE
+ ПPOГPAMMЫ OПEPAЦИOHHOЙ CИCTEMЫ ДИCПAK, ПOДCЧИTЫBAETCЯ
+ ПPOГPAMMOЙ ПEPEПИCИ C MЛ HA MД 2053 ПPИ ПOCTAHOBKE
+ OПEPAЦИOHHOЙ CИCTEMЫ.
+(CM. "ФOPMYЛЯP" ИЫ.00110-01 30 01, ПPИЛOЖEHИE 1).
+*/ ПO OKOHЧAHИИ ПEPEПИCИ KOHTPOЛЬHAЯ
+ CYMMA ПEЧATAETCЯ HA AЦПY.
+*S2. ПOДCЧET KOHTPOЛЬHЫX CYMM MЛ2, MЛ3
+ПPOИЗBOДИTCЯ ПPИ ПEPEПИCИ ИHФOPMAЦИИ C HИX HA MAГHИTHЫЙ
+ДИCK 2048 ПPOГPAMMOЙ "UNICOP"
+(CM. "ФOPMYЛЯP" ИЫ.00110-01 30 01, ПPИЛOЖEHИE 1).
+ПO OKOHЧAHИИ ПEPEПИCИ
+ HA TEPMИHAЛ И HA AЦПY BЫДAETCЯ KOHTPOЛЬHAЯ CYMMA
+ MЛ.
+*S3. KOHTPOЛЬHAЯ CYMMA MЛ4 ПOДCЧИTЫBAETCЯ ПPИ ПEPEПИCИ
+C ДAHHOЙ MЛ HA ДPYГYЮ MЛ B PEЖИME EC ПPOГPAMMOЙ "KOПEC".
+ПPOГPAMMA "KOПEC" KOПИPYET  ДO ПPИЗHAKA KOHЦA
+ЛEHTЫ (ДBA ПOДPЯД ИДYЩИX ПPИЗHAKA TM), ПOЭTOMY ПEPEД
+KOПИPOBAHИEM HEOБXOДИMO ПPИCBOИTЬ HOMEPA ЛEHTAM
+ДИPEKTИBAMИ OПEPATOPA "ECM 1 HY" - ЛEHTE ЧTEHИЯ И
+"ECM 2 HY" - ЛEHTE ЗAПИCИ, ЗДECЬ HY - HOMEP MAГHИTOФOHA C MЛ.
+*2/*D         CTPYKTYPA ДИAЛOГA
+*/*D         -----------------
+*/*D                 ДИMИП 419900
+*/*D  <BEPCИЯ>       KT ДOKЭБ 0 ДOKЭБ
+*/*D  =              PEД KOПEC
+*/*D  *              Ф
+*/*D  *              BЫЙ
+*/*D
+*/ ПO OKOHЧAHИИ ПEPEПИCИ KOHTPOЛЬHAЯ CYMMA MЛ
+PACПEЧATЫBAETCЯ HA AЦПY.
+*P*2/*MDПEPEЧEHЬ COKPAЩEHИЙ
+*2S*DAЦПY - AЛФABИTHO-ЦИФPOBOE ПEЧATAЮЩEE YCTPOЙCTBO
+*S*DBK   - BЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC
+*S*DKC   - KOHTPOЛЬHAЯ CYMMA
+*S*DMД   - MAГHИTHЫЙ ДИCK
+*S*DMЛ   - MAГHИTHAЯ ЛEHTA
+*S*DMH   - MAГHИTHЫЙ HOCИTEЛЬ
+*S*DOCПO - OБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE
+*S*DOTK  - OTДEЛ TEXHИЧECKOГO KOHTPOЛЯ
+*S*DTM   - TAPE-MARK (MГЗ) ЛEHTOЧHЫЙ MAPKEP
+*S*DTY   - TEXHИЧECKИE YCЛOBИЯ
+*S*DЭД   - ЭKCПЛYATAЦИOHHAЯ ДOKYMEHTAЦИЯ
+*P*2/*MDПEPEЧEHЬ CCЫЛOЧHЫX ДOKYMEHTOB
+*2/*D1. TY6-17-686-75   ЛEHTA MAГHИTHAЯ TИП B4502-12.TEXHИЧECKИE
+*/*D                   YCЛOBИЯ.
+*/*D2. ГOCT 20958-80   MAШИHЫ BЫЧИCЛИTEЛЬHЫE.ЛEHTЫ MAГHИTHЫE
+*/*D                   БEЗ ЗAПИCИ. OБЩИE TEXHИЧECKИE YCЛOBИЯ.
+*/*D3. ГOCT 16325-76   MAШИHЫ BЫЧИCЛИTEЛЬHЫE ЭЛEKTPOHHЫE ЦИФ-
+*/*D                   POBЫE OБЩEГO HAЗHAЧEHИЯ.OБЩИE TEXHИ-
+*/*D                   ЧECKИE TPEБOBAHИЯ.
+*/*D4. ГOCT 19.106-78  EДИHAЯ CИCTEMA ПPOГPAMMHOЙ ДOKYMEHTAЦИИ.
+*/*D                   TPEБOBAHИЯ K ПPOГPAMMHЫM ДOKYMEHTAM,
+*/*D                   BЫПOЛHEHHЫM ПEЧATHЫM CПOCOБOM.
+*/*D5. BЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC "ЭЛЬБPYC 1-KБ".
+*/*D   OБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE.
+*/*D   ФOPMYЛЯP.  ИЫ.00110-01 30 01
+*P*0RL*0MCS1 67
+*3/*MDЛИCT PEГИCTPAЦИИ ИЗMEHEHИЙ
+*2/*D.-----------------------------------------------------------------.
+*/*DI   IHOMEPA ЛИCTOB (CTPAHИЦ)IBCEГO I        I          I      I   I
+*/*DI И I-----------------------IЛИCTOBI        I BXOДЯЩИЙ I      I   I
+*/*DI З I ИЗ- I ЗA- I     IAHHY-I(CTP.)I HOMEP  I   HOMEP  I ПOД- I Д I
+*/*DI M I ME- I ME- I HO- IЛИPO-I  B   I ДOKY-  ICOПPOBOДИ-I ПИCЬ I A I
+*/*DI . I HEH-I HEH-I BЫX IBAH- IДOKY- I MEHTA  I TEЛЬHOГO I      I T I
+*/*DI   I HЫX I HЫX I     IHЫX  IMEHTE I        IДOKYMEHTA I      I A I
+*SL1 5 11 17 23 29 36 45 56 63 67
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+$
+*E
+*END
+*END F
+*READ OLD
+*END FILE
+``````
+ЕКОНЕЦ

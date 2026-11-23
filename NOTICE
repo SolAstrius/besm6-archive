@@ -1,0 +1,22 @@
+besm6-archive
+Copyright 2026 Sol Astrius Phoenix
+https://src.astrius.ink/besm6-archive
+
+This product includes software developed by Sol Astrius Phoenix
+(https://src.astrius.ink/besm6-archive), licensed under the Apache License, Version 2.0.
+
+-------------------------------------------------------------------------------
+The Apache licence covers the tools (tools/, Makefile) only.
+
+docs/4023/ holds documents of the Институт точной механики и вычислительной техники
+(ИТМиВТ), 1988, reproduced from the job decks on tape 4023: the decks (*.b6, with the
+formatter passport adapted to run under dispak), their printouts (*.lst), the
+facsimile PDFs and the LaTeX edition. The rights in the documents remain with their
+owners; they are published here for historical research.
+
+Not included; downloaded at build time:
+    The volume images (disks/), from https://github.com/besm6/besm6.github.io
+    (download/disks), published by the besm6 project.
+    dispak, the БЭСМ-6 user-level simulator, https://github.com/besm6/dispak
+    (GNU General Public License v2 or later), built from a pinned commit.
+    Tectonic (https://tectonic-typesetting.github.io, MIT) for the LaTeX edition.

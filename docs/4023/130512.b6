@@ -1,0 +1,125 @@
+ШИФР 130512 ЗС5
+TPA 64^
+AЦПY 10^
+BPE 500^
+OЗY 32^
+ЛEHT 31(2248-2702)^
+ЛЕН 41(2048)^
+EEB1A3
+*NAME BK-ЭБ TПPCП
+*PERSO:31
+*CALL FICMEMORY
+*NO LIST
+*NO LOAD
+       PROGRAMMA
+       CALL YESLIS
+       CALL NEWLIS
+       CALL NOTLIS
+       PRINT 11111
+11111  FORMAT(68(/))
+       CALL SCHEMA
+       STOP
+       END
+*EXECU
+*RED
+*0STA*NN*RG*1RL*0MCS1 67
+*ST4 35 42 67
+ 1)*MDCOГЛACOBAHO
+*MDПPEДCTABИTEЛЬ ЗAKAЗЧИKA N2272
+*/*10C B.И.ПOHOMAPEHKO*/
+ 2)*MDYTBEPЖДAЮ
+*MDPYKOBOДИTEЛЬ ПPEДПPИЯTИЯ
+*/*10C Г.Г.PЯБOB*/
+$
+*0MCS5 63
+*3/
+*MDBЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC "ЭЛЬБPYC 1-KБ"
+*MDOБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE
+*MDCИCTEMA ПPOГPAMMИPOBAHИЯ
+*MDTEKCT ПPOГPAMMЫ
+*MDЛИCT YTBEPЖДEHИЯ
+*MDИЫ.00110-01 12 02-ЛY
+*2/
+*0MCS1 67*ST9 32 40 67
+ 2)*MDПPEДCTABИTEЛИ
+*MDПPEДПPИЯTИЯ-PAЗPAБOTЧИKA
+*2/     HAЧAЛЬHИK OTДEЛA
+*/*11C B.Ф.TЮPИH
+*2/     ИCПOЛHИTEЛЬ */*11C Г.H.AKИMOB
+*2/     HOPMOKOHTPOЛEP */*11C T.П.PYДAЧEHKO
+ $
+*0MCS5 63
+*3/
+*MD1988
+*/*48GЛИTEPA
+*P
+*ST9 31
+ 1)*MDYTBEPЖДEH
+*/*MDИЫ.00110-01 12 02-ЛY
+$
+*5/
+*MDBЫЧИCЛИTEЛЬHЫЙ KOMПЛEKC "ЭЛЬБPYC 1-KБ"
+*MDOБЩEE CИCTEMHOE ПPOГPAMMHOE OБECПEЧEHИE
+*MDCИCTEMA ПPOГPAMMИPOBAHИЯ
+*MDTEKCT ПPOГPAMMЫ
+*MDИЫ.00110-01 12 02
+*MD      ЛИCTOB 4
+*14/*MD1988
+*/*48GЛИTEPA
+*2N
+*0STA*RG*0MCS5 63
+*1RL
+*0STPИЫ.00110-01 12 02
+*3/
+*MD AHHOTAЦИЯ
+*2S HACTOЯЩИЙ ДOKYMEHT COДEPЖИT TИTYЛЬHYЮ ЧACTЬ,
+ИHФOPMAЦИOHHYЮ ЧACTЬ И ЧACTЬ PEГИCTPAЦИИ ИЗMEHEHИЙ ДOKYMEHTA
+"CИCTEMA ПPOГPAMMИPOBAHИЯ. TEKCT ПPOГPAMMЫ".
+*S OCHOBHAЯ ЧACTЬ ДOKYMEHTA "CИCTEMA ПPOГPAMMИPOBAHИЯ.
+TEKCT ПPOГPAMMЫ", COДEPЖAЩAЯ COБCTBEHHO TEKCTЫ
+KOMПOHEHTOB CИCTEMЫ ПPOГPAMMИPOBAHИЯ, ПPEДCTABЛEHA B COCTABE
+ПPOГPAMMHOЙ ДOKYMEHTAЦИИ HA MAГHИTHOЙ ЛEHTE ИЫ.00110-01 12 02.
+*S MAГHИTHAЯ ЛEHTA ИЫ.00110-01 12 02 COДEPЖИT TEKCTЫ
+KOMПOHEHTOB CИCTEMЫ ПPOГPAMMИPOBAHИЯ B BИДE ГOTOBЫX ПPOГPAMM.
+*S ИHФOPMAЦИЯ HA MAГHИTHOЙ ЛEHTE ЗAПИCAHA B PEЖИME EC
+CГPYППИPOBAHHЫMИ B ФAЙЛЫ ЗAПИCЯMИ ДЛИHOЙ 6144 БAЙTA.
+KAЖДЫЙ KOMПOHEHT COДEPЖИTCЯ B ДBYX ПOCЛEДOBATEЛЬHЫX ИДEHTИЧHЫX
+ФAЙЛAX.
+*S ДЛЯ PAБOTЫ C CИCTEMOЙ ПPOГPAMMИPOBAHИЯ ИHФOPMAЦИЮ C MAГHИTHOЙ ЛEHTЫ
+HEOБXOДИMO ПEPEПИCATЬ B ПPEДBAPИTEЛЬHO COЗДAHHЫE OБЛACTИ.
+ПEPEПИCЬ OCYЩECTBЛЯETCЯ C ПOMOЩЬЮ ПPOГPAMMЫ "UNICOP"
+(CM. "OПEPAЦИOHHAЯ CИCTEMA ДИCПAK. PYKOBOДCTBO ПPOГPAMMИCTA"
+ИЫ.00110-01 33 01, PAЗДEЛ 6).
+*S PACПEЧATKY COДEPЖИMOГO ДAHHOГO ДOKYMEHTA MOЖHO
+BЫПOЛHИTЬ HA PAБOTAЮЩEЙ OC ДИCПAK, ИCПOЛЬЗYЯ ДИAЛOГOBYЮ ПPOГPAMMY
+"CEPП" (CM. "OПEPAЦИOHHAЯ CИCTEMA ДИCПAK. PYKOBOДCTBO
+CИCTEMHOГO ПPOГPAMMИCTA" ИЫ.00110-01 32 01, PAЗДEЛ 7).
+*P
+*2/*MD COДEPЖAHИE
+*2/
+*/*D   HAИMEHOBAHИE KOMПOHEHTA     HOMEP      ЧИCЛO
+*/*D                               ФAЙЛA     ЗAПИCEЙ
+*/*D
+*/*D 1. KOMПOH.PEЖИM1               1-2         20
+*/*D 2. KOMПOH.PEЖИM2               3-4         20
+*/*D 3. KOMПOH.PEЖИM3               5-6         20
+*P*0RL*0MCS1 67
+*3/*MDЛИCT PEГИCTPAЦИИ ИЗMEHEHИЙ
+*2/*D.-----------------------------------------------------------------.
+*/*DI   IHOMEPA ЛИCTOB (CTPAHИЦ)IBCEГO I        I          I      I   I
+*/*DI И I-----------------------IЛИCTOBI        I BXOДЯЩИЙ I      I   I
+*/*DI З I ИЗ- I ЗA- I     IAHHY-I(CTP.)I HOMEP  I   HOMEP  I ПOД- I Д I
+*/*DI M I ME- I ME- I HO- IЛИPO-I  B   I ДOKY-  ICOПPOBOДИ-I ПИCЬ I A I
+*/*DI . I HEH-I HEH-I BЫX IBAH- IДOKY- I MEHTA  I TEЛЬHOГO I      I T I
+*/*DI   I HЫX I HЫX I     IHЫX  IMEHTE I        IДOKYMEHTA I      I A I
+*SL1 5 11 17 23 29 36 45 56 63 67
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+ 1)*2/ 1)*2/ 1)*2/ 1)*2/ 1)*2/
+$
+*E
+*END
+*END FILE
+``````
+ЕКОНЕЦ

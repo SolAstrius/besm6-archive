@@ -1,0 +1,978 @@
+      PROGRAM ELBRUS                                                       00001
+C PEШEHИE CИCTEMЫ ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ                        00002
+C ПPИ ИCПOЛЬЗOBAHИИ CTAHДAPTHOЙ ПЯTИTOЧEЧHOЙ AППPOK-                       00003
+C CИMAЦИИ ДИФФEPEHЦИAЛЬHOГO YPABHEHИЯ                                      00004
+C  D/DX (DU/DX) + D/DY (DU/DY) + B (DU/DX+DU/DY)=F(X,Y)                    00005
+C 0.LE.X.LE.1 , 0.LE.Y.LE.1,                                               00006
+C U=0 HA ГPAHИЦE OБЛACTИ, TOЧHOE PEШEHИE                                   00007
+C U =SIN(PI X)*SIN(PI Y)                                                   00008
+C ЗAДAЧA ИЗ KHИГИ Л.XEЙГEMAH, Д.ЯHГ                                        00009
+C ПPИKЛAДHЫE ИTEPAЦИOHHЫE METOДЫ                                           00010
+C MOCKBA MИP 1986 Г.                                                       00011
+C CИCTEMA ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ                                00012
+C PEШAETCЯ METOДOM OPTOГOHAЛЬHЫX HEBЯЗOK                                   00013
+C OПИCAHHЫM B TOЙ ЖE KHИГE                                                 00014
+C MATPИЦA CИCTEMЫ ПЯTИДИAГOHAЛЬHAЯ HECИMMETPИЧHAЯ                          00015
+C HEЗHAKOOПPEДEЛEHHAЯ                                                      00016
+C HA ПEЧATЬ BЫBOДИTCЯ                                                      00017
+C ЧИCЛO YPAHHИЙ CИCTEMЫ                                                    00018
+C ЧИCЛO ИTEPAЦИЙ ПPИ EE PEШEHИИ                                            00019
+C OPTOГOHAЛЬHOCTЬ БAЗИCHЫX BEKTOPOB                                        00020
+C HOPMA HEBЯЗKИ ЛИHEЙHOЙ CИCTEMЫ T.E.                                      00021
+C OШИБKA BЫЧИCЛEHHOГO PEШEHИЯ ПO CPABHEHИЮ                                 00022
+C C TOЧHЫM.                                                                00023
+C                                                                          00024
+C ДЛЯ ПOBЫШEHИЯ PAЗMEPHOCTИ ЗAДAЧИ                                         00025
+C CЛEДYET ЗAДATЬ ДЛИHY PAБOЧEЙ ПAMЯTИ                                      00026
+C     DIMENSION Q(XXXXXX)                                                  00027
+C    ЗHAЧEHИE XXXXXX                                                       00028
+C  B NELQ=XXXXXX                                                           00029
+      DIMENSION Q(18000),IQ(1)                                             00030
+      EQUIVALENCE (Q(1),IQ(1))                                             00031
+      NELQ=18000                                                           00032
+      ICYCL=1                                                              00033
+      CALL PTIME                                                           00034
+      DO 288 KR=1,ICYCL                                                    00035
+      N=NELQ/18                                                            00036
+      NG=SQRT(N)                                                           00037
+      N=NG*NG                                                              00038
+      NPOINT=NG+2                                                          00039
+      NELGI=NELQ                                                           00040
+      NELGR=11*N                                                           00041
+      NELAR=5*N                                                            00042
+      ISTACR=0                                                             00043
+      ISTACI=NELGR                                                         00044
+      EPS=1.E-6                                                            00045
+      MAXIT=500                                                            00046
+      IQA1=0                                                               00047
+      IQB=IQA1+NELAR                                                       00048
+      IQGEND=IQB+N                                                         00049
+      IQJHA1=ISTACI                                                        00050
+      IQUMA=IQJHA1+NELAR                                                   00051
+      ISENDI=IQUMA+N                                                       00052
+      IQA=IQA1                                                             00053
+      JHA=IQJHA1                                                           00054
+      PI=4.0*ATAN(1.0)                                                     00055
+      BT=-100.0                                                            00056
+      H=1.0/(NPOINT-1)                                                     00057
+      C=H*BT/2.0                                                           00058
+      IQ(JHA+1)=1                                                          00059
+      IQ(JHA+2)=2                                                          00060
+      IQ(JHA+3)=NG+1                                                       00061
+      Q(IQA+1)=4.0                                                         00062
+      Q(IQA+2)=-1.0-C                                                      00063
+      Q(IQA+3)=-1.0                                                        00064
+      INDEX=3                                                              00065
+      IQ(IQUMA+1)=3                                                        00066
+      NG2=NG-2                                                             00067
+      DO 1 I=1,NG2                                                         00068
+      IQ(JHA+INDEX+1)=I                                                    00069
+      IQ(JHA+INDEX+2)=I+1                                                  00070
+      IQ(JHA+INDEX+3)=I+2                                                  00071
+      IQ(JHA+INDEX+4)=I+NG+1                                               00072
+      Q(IQA+INDEX+1)=-1.0+C                                                00073
+      Q(IQA+INDEX+2)=4.0                                                   00074
+      Q(IQA+INDEX+3)=-1.0-C                                                00075
+      Q(IQA+INDEX+4)=-1.0                                                  00076
+      INDEX=INDEX+4                                                        00077
+      IQ(IQUMA+I+1)=INDEX                                                  00078
+    1 CONTINUE                                                             00079
+      IQ(JHA+INDEX+1)=NG-1                                                 00080
+      IQ(JHA+INDEX+2)=NG                                                   00081
+      IQ(JHA+INDEX+3)=2*NG                                                 00082
+      Q(IQA+INDEX+1)=-1.0+C                                                00083
+      Q(IQA+INDEX+2)=4.0                                                   00084
+      Q(IQA+INDEX+3)=-1.0                                                  00085
+      INDEX=INDEX+3                                                        00086
+      IQ(IQUMA+NG)=INDEX                                                   00087
+      INDEX1=NG+1                                                          00088
+      DO 2 I=1,NG2                                                         00089
+      IQ(JHA+INDEX+1)=1+(I-1)*NG                                           00090
+      IQ(JHA+INDEX+2)=1+I*NG                                               00091
+      IQ(JHA+INDEX+3)=2+I*NG                                               00092
+      IQ(JHA+INDEX+4)=1+(I+1)*NG                                           00093
+       Q(IQA+INDEX+1)=-1.0                                                 00094
+       Q(IQA+INDEX+2)=4.0                                                  00095
+       Q(IQA+INDEX+3)=-1.0-C                                               00096
+       Q(IQA+INDEX+4)=-1.0                                                 00097
+      INDEX=INDEX+4                                                        00098
+      IQ(IQUMA+INDEX1)=INDEX                                               00099
+      INDEX1=INDEX1+1                                                      00100
+      NG1=NG-1                                                             00101
+      DO 3 J=2,NG1                                                         00102
+      IQ(JHA+INDEX+1)=(I-1)*NG+J                                           00103
+      IQ(JHA+INDEX+2)=I*NG+J-1                                             00104
+      IQ(JHA+INDEX+3)=I*NG+J                                               00105
+      IQ(JHA+INDEX+4)=I*NG+J+1                                             00106
+      IQ(JHA+INDEX+5)=(I+1)*NG+J                                           00107
+      Q(IQA+INDEX+1)=-1.0                                                  00108
+      Q(IQA+INDEX+2)=-1.0+C                                                00109
+      Q(IQA+INDEX+3)=4.0                                                   00110
+      Q(IQA+INDEX+4)=-1.0-C                                                00111
+      Q(IQA+INDEX+5)=-1.0                                                  00112
+      INDEX=INDEX+5                                                        00113
+      IQ(IQUMA+INDEX1)=INDEX                                               00114
+      INDEX1=INDEX1+1                                                      00115
+    3 CONTINUE                                                             00116
+      IQ(JHA+INDEX+1)=I*NG                                                 00117
+      IQ(JHA+INDEX+2)=(I+1)*NG-1                                           00118
+      IQ(JHA+INDEX+3)=(I+1)*NG                                             00119
+      IQ(JHA+INDEX+4)=(I+2)*NG                                             00120
+      Q(IQA+INDEX+1)=-1.0                                                  00121
+      Q(IQA+INDEX+2)=-1.0+C                                                00122
+      Q(IQA+INDEX+3)=4.0                                                   00123
+      Q(IQA+INDEX+4)=-1.0                                                  00124
+       INDEX=INDEX+4                                                       00125
+      IQ(IQUMA+INDEX1)=INDEX                                               00126
+      INDEX1=INDEX1+1                                                      00127
+    2 CONTINUE                                                             00128
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00129
+      IQ(JHA+INDEX+2)=INDEX1                                               00130
+      IQ(JHA+INDEX+3)=INDEX1+1                                             00131
+      Q(IQA+INDEX+1)=-1.0                                                  00132
+      Q(IQA+INDEX+2)=4.0                                                   00133
+      Q(IQA+INDEX+3)=-1.0-C                                                00134
+      INDEX=INDEX+3                                                        00135
+      IQ(IQUMA+INDEX1)=INDEX                                               00136
+      INDEX1=INDEX1+1                                                      00137
+      DO 4 I=1,NG2                                                         00138
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00139
+      IQ(JHA+INDEX+2)=INDEX1-1                                             00140
+      IQ(JHA+INDEX+3)=INDEX1                                               00141
+      IQ(JHA+INDEX+4)=INDEX1+1                                             00142
+      Q(IQA+INDEX+1)=-1.0                                                  00143
+      Q(IQA+INDEX+2)=-1.0+C                                                00144
+      Q(IQA+INDEX+3)=4.0                                                   00145
+      Q(IQA+INDEX+4)=-1.0-C                                                00146
+      INDEX=INDEX+4                                                        00147
+      IQ(IQUMA+INDEX1)=INDEX                                               00148
+      INDEX1=INDEX1+1                                                      00149
+    4 CONTINUE                                                             00150
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00151
+      IQ(JHA+INDEX+2)=INDEX1-1                                             00152
+      IQ(JHA+INDEX+3)=INDEX1                                               00153
+      Q(IQA+INDEX+1)=-1.0                                                  00154
+      Q(IQA+INDEX+2)=-1.0+C                                                00155
+      Q(IQA+INDEX+3)=4.0                                                   00156
+      INDEX=INDEX+3                                                        00157
+      IQ(IQUMA+INDEX1)=INDEX                                               00158
+      L1=1                                                                 00159
+      L2=NG                                                                00160
+      DO 111 JI=1,NG                                                       00161
+      K=1                                                                  00162
+      DO 112 II=L1,L2                                                      00163
+      X=K*H                                                                00164
+      Y=1.0-JI*H                                                           00165
+      F=(-2.0*(PI**2)*SIN(PI*X)*SIN(PI*Y)+BT*PI*COS(PI*X)*SIN(PI*Y         00166
+     *))*H**2                                                              00167
+      Q(IQB+II)=-F                                                         00168
+      K=K+1                                                                00169
+ 112  CONTINUE                                                             00170
+      L1=L1+NG                                                             00171
+      L2=L2+NG                                                             00172
+ 111  CONTINUE                                                             00173
+      NELA=NELAR                                                           00174
+      NELR=NELGR                                                           00175
+      NELI=NELGI                                                           00176
+      TOLER=1.E-6                                                          00177
+      NP=20                                                                00178
+      IQA=IQA1                                                             00179
+      IQJHA=IQJHA1                                                         00180
+      IQUMA=IQJHA+NELA                                                     00181
+      IQB=IQA+NELA                                                         00182
+      IQX=IQB+N                                                            00183
+      IQP1=IQX+N                                                           00184
+      IQR=IQP1+N                                                           00185
+      IQS=IQR+N                                                            00186
+      IQD=IQS+N                                                            00187
+      ITER=0                                                               00188
+      DO 401 I=1,N                                                         00189
+      Q(IQX+I)=0.0                                                         00190
+  401 CONTINUE                                                             00191
+   8   CONTINUE                                                            00192
+C   INITIAL CALCULATIONS                                                   00193
+      ITERN=0                                                              00194
+C  R=A*X0                                                                  00195
+      IQXX=IQX                                                             00196
+      IQRR=IQR                                                             00197
+      IL=1                                                                 00198
+      DO 301 I=1,N                                                         00199
+      SUM=0.0                                                              00200
+      IT=IQ(IQUMA+I)                                                       00201
+      DO 302 II=IL,IT                                                      00202
+      J=IQ(IQJHA+II)                                                       00203
+  302 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00204
+      Q(IQRR+I)=SUM                                                        00205
+      IL=IT+1                                                              00206
+  301 CONTINUE                                                             00207
+C  R0=B-AX0                                                                00208
+      DO 510 I=1,N                                                         00209
+  510 Q(IQR+I)=Q(IQB+I)-Q(IQR+I)                                           00210
+      DO 505 I=1,N                                                         00211
+ 505  Q(IQP1+I)=Q(IQR+I)                                                   00212
+C    ITERATIVE LOOP                                                        00213
+   5  CONTINUE                                                             00214
+C  UPDATE ITERATION COUNTER                                                00215
+      ITERN=ITERN+1                                                        00216
+      ITER=ITER+1                                                          00217
+C   FIND OPTIMUM POINT ALONG SEARCH DIRECTION                              00218
+C    D=A*PI                                                                00219
+      IQXX=IQP1                                                            00220
+      IQRR=IQD                                                             00221
+      IL=1                                                                 00222
+      DO 311 I=1,N                                                         00223
+      SUM=0.0                                                              00224
+      IT=IQ(IQUMA+I)                                                       00225
+      DO 312 II=IL,IT                                                      00226
+      J=IQ(IQJHA+II)                                                       00227
+  312 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00228
+      Q(IQRR+I)=SUM                                                        00229
+      IL=IT+1                                                              00230
+  311 CONTINUE                                                             00231
+      ALPHA=0.0                                                            00232
+      T=0.0                                                                00233
+      DO 535 I=1,N                                                         00234
+  535 ALPHA=ALPHA+Q(IQR+I)*Q(IQD+I)                                        00235
+      DO 536 I=1,N                                                         00236
+  536 T=T+Q(IQD+I)*Q(IQD+I)                                                00237
+      ALPHA=ALPHA/T                                                        00238
+C   FIND NEW RESIDUAL VECTOR                                               00239
+      DO 620 I=1,N                                                         00240
+ 620  Q(IQS+I)=Q(IQD+I)*ALPHA                                              00241
+      DO 520 I=1,N                                                         00242
+ 520  Q(IQR+I)=Q(IQR+I)-Q(IQS+I)                                           00243
+C   FIND NEW SOLUTION APPROXIMATION                                        00244
+      DO 602 I=1,N                                                         00245
+  602 Q(IQS+I)=Q(IQP1+I)*ALPHA                                             00246
+      DO 502 I=1,N                                                         00247
+  502 Q(IQX+I)=Q(IQX+I)+Q(IQS+I)                                           00248
+C   FIND NORM OF RESIDUAL                                                  00249
+      BIG=0.0                                                              00250
+      BIGS=0.0                                                             00251
+      DO 645 I=1,N                                                         00252
+      B1=ABS(Q(IQR+I))                                                     00253
+      B2=ABS(Q(IQS+I))                                                     00254
+      IF(BIG.LT.B1) BIG=B1                                                 00255
+      IF(BIGS.LT.B2) BIGS=B2                                               00256
+  645 CONTINUE                                                             00257
+C    STOP IF TOLERANCE IS MET                                              00258
+      IF(BIG.LE.TOLER) GO TO 7                                             00259
+      IF(BIGS.LE.TOLER) GO TO 7                                            00260
+      IF(ITER.GT.MAXIT) GO TO 7                                            00261
+C  IF MORE THAN N ITERATION THEN START AGAIN FROM NEW POINT                00262
+C   REMOVE ROUNDOFF ERROR                                                  00263
+      IF(ITERN.GT.NP) GO TO 8                                              00264
+C    ORTHONORMALIZATION PROCEDURE                                          00265
+      IQXX=IQR                                                             00266
+      IQRR=IQS                                                             00267
+      IL=1                                                                 00268
+      DO 331 I=1,N                                                         00269
+      SUM=0.0                                                              00270
+      IT=IQ(IQUMA+I)                                                       00271
+      DO 342 II=IL,IT                                                      00272
+      J=IQ(IQJHA+II)                                                       00273
+  342 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00274
+      Q(IQRR+I)=SUM                                                        00275
+      IL=IT+1                                                              00276
+  331 CONTINUE                                                             00277
+C    FIND BETA                                                             00278
+      U=0.0                                                                00279
+      BETA=0.0                                                             00280
+      DO 555 I=1,N                                                         00281
+  555 U=U+Q(IQS+I)*Q(IQD+I)                                                00282
+      DO 546 I=1,N                                                         00283
+  546 BETA=BETA+Q(IQD+I)*Q(IQD+I)                                          00284
+      BETA=-U/BETA                                                         00285
+C    FIND NEW SEARCH DIRECTION                                             00286
+      DO 672 I=1,N                                                         00287
+ 672  Q(IQP1+I)=Q(IQP1+I)*BETA                                             00288
+      DO 500 I=1,N                                                         00289
+  500 Q(IQP1+I)=Q(IQP1+I)+Q(IQR+I)                                         00290
+      GO TO 5                                                              00291
+    7 CONTINUE                                                             00292
+      IT1=ITER                                                             00293
+      ALPH=ALPHA                                                           00294
+      BIG1=BIG                                                             00295
+      ERR=0.0                                                              00296
+      L1=1                                                                 00297
+      L2=NG                                                                00298
+      DO 811 JI=1,NG                                                       00299
+      K=1                                                                  00300
+      DO 812 II=L1,L2                                                      00301
+      X=K*H                                                                00302
+      Y=1.0-JI*H                                                           00303
+      ER1=ABS(Q(IQGEND+II)-SIN(PI*X)*SIN(PI*Y))                            00304
+      IF(ABS(ER1).GT.ERR) ERR=ER1                                          00305
+      K=K+1                                                                00306
+ 812  CONTINUE                                                             00307
+      L1=L1+NG                                                             00308
+      L2=L2+NG                                                             00309
+ 811  CONTINUE                                                             00310
+  288  CONTINUE                                                            00311
+      CALL PTIME                                                           00312
+      PRINT 182,ICYCL,N,ITER,ALPHA,BIG,ERR                                 00313
+  182 FORMAT(' ЧИCЛO ПOBTOPEHИЙ PACЧETA        ',I10,/,                    00314
+     *' ЧИCЛO YPABHEHИЙ                   ',I10,/,                         00315
+     *' ЧИCЛO ИTEPAЦИЙ                    ',I10,/,                         00316
+     *' OPTOГOHAЛЬHOCTЬ БAЗИCHЫX BEKTOPOB ',E12.5,/,                       00317
+     *' HEBЯЗKA AЛГEБPAИЧECKOЙ CИCTEMЫ    ',E12.5,/,                       00318
+     *' OШИБKA PEШEHИЯ                    ',E12.5)                         00319
+      STOP                                                                 00320
+      END                                                                  00321
+*READ OLD
+ШИФP 130200 ЗCX^ЛEH 31(FTNB)42(BЦAH-ЗП)^                                   00001
+OЗY 32^                                                                    00002
+EEB1A3                                                                     00003
+*NAME                                                                      00004
+*TRANS:INITFTN,,31                                                         00005
+*FULL                                                                      00006
+*TAPES:42005                                                               00007
+*FICME                                                                     00008
+*NO OPT                                                                    00009
+*SYSTEM                                                                    00010
+*SUPER                                                                     00011
+      PROGRAM ELBRUS                                                       00012
+C PEШEHИE CИCTEMЫ ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ                        00013
+C ПPИ ИCПOЛЬЗOBAHИИ CTAHДAPTHOЙ ПЯTИTOЧEЧHOЙ AППPOK-                       00014
+C CИMAЦИИ ДИФФEPEHЦИAЛЬHOГO YPABHEHИЯ                                      00015
+C  D/DX (DU/DX) + D/DY (DU/DY) + B (DU/DX+DU/DY)=F(X,Y)                    00016
+C 0.LE.X.LE.1 , 0.LE.Y.LE.1,                                               00017
+C U=0 HA ГPAHИЦE OБЛACTИ, TOЧHOE PEШEHИE                                   00018
+C U =SIN(PI X)*SIN(PI Y)                                                   00019
+C ЗAДAЧA ИЗ KHИГИ Л.XEЙГEMAH, Д.ЯHГ                                        00020
+C ПPИKЛAДHЫE ИTEPAЦИOHHЫE METOДЫ                                           00021
+C MOCKBA MИP 1986 Г.                                                       00022
+C CИCTEMA ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ                                00023
+C PEШAETCЯ METOДOM OPTOГOHAЛЬHЫX HEBЯЗOK                                   00024
+C OПИCAHHЫM B TOЙ ЖE KHИГE                                                 00025
+C MATPИЦA CИCTEMЫ ПЯTИДИAГOHAЛЬHAЯ HECИMMETPИЧHAЯ                          00026
+C HEЗHAKOOПPEДEЛEHHAЯ                                                      00027
+C HA ПEЧATЬ BЫBOДИTCЯ                                                      00028
+C ЧИCЛO YPAHHИЙ CИCTEMЫ                                                    00029
+C ЧИCЛO ИTEPAЦИЙ ПPИ EE PEШEHИИ                                            00030
+C OPTOГOHAЛЬHOCTЬ БAЗИCHЫX BEKTOPOB                                        00031
+C HOPMA HEBЯЗKИ ЛИHEЙHOЙ CИCTEMЫ T.E.                                      00032
+C OШИБKA BЫЧИCЛEHHOГO PEШEHИЯ ПO CPABHEHИЮ                                 00033
+C C TOЧHЫM.                                                                00034
+C                                                                          00035
+C ДЛЯ ПOBЫШEHИЯ PAЗMEPHOCTИ ЗAДAЧИ                                         00036
+C CЛEДYET ЗAДATЬ ДЛИHY PAБOЧEЙ ПAMЯTИ                                      00037
+C     DIMENSION Q(XXXXXX)                                                  00038
+C    ЗHAЧEHИE XXXXXX                                                       00039
+C  B NELQ=XXXXXX                                                           00040
+      DIMENSION Q(18000),IQ(1)                                             00041
+      EQUIVALENCE (Q(1),IQ(1))                                             00042
+      NELQ=18000                                                           00043
+      ICYCL=1                                                              00044
+C     CALL PTIME                                                           00045
+      DO 288 KR=1,ICYCL                                                    00046
+      N=NELQ/18                                                            00047
+      NG=SQRT(N)                                                           00048
+      N=NG*NG                                                              00049
+      NPOINT=NG+2                                                          00050
+      NELGI=NELQ                                                           00051
+      NELGR=11*N                                                           00052
+      NELAR=5*N                                                            00053
+      ISTACR=0                                                             00054
+      ISTACI=NELGR                                                         00055
+      EPS=1.E-6                                                            00056
+      MAXIT=500                                                            00057
+      IQA1=0                                                               00058
+      IQB=IQA1+NELAR                                                       00059
+      IQGEND=IQB+N                                                         00060
+      IQJHA1=ISTACI                                                        00061
+      IQUMA=IQJHA1+NELAR                                                   00062
+      ISENDI=IQUMA+N                                                       00063
+      IQA=IQA1                                                             00064
+      JHA=IQJHA1                                                           00065
+      PI=4.0*ATAN(1.0)                                                     00066
+      BT=-100.0                                                            00067
+      H=1.0/(NPOINT-1)                                                     00068
+      C=H*BT/2.0                                                           00069
+      IQ(JHA+1)=1                                                          00070
+      IQ(JHA+2)=2                                                          00071
+      IQ(JHA+3)=NG+1                                                       00072
+      Q(IQA+1)=4.0                                                         00073
+      Q(IQA+2)=-1.0-C                                                      00074
+      Q(IQA+3)=-1.0                                                        00075
+      INDEX=3                                                              00076
+      IQ(IQUMA+1)=3                                                        00077
+      NG2=NG-2                                                             00078
+      DO 1 I=1,NG2                                                         00079
+      IQ(JHA+INDEX+1)=I                                                    00080
+      IQ(JHA+INDEX+2)=I+1                                                  00081
+      IQ(JHA+INDEX+3)=I+2                                                  00082
+      IQ(JHA+INDEX+4)=I+NG+1                                               00083
+      Q(IQA+INDEX+1)=-1.0+C                                                00084
+      Q(IQA+INDEX+2)=4.0                                                   00085
+      Q(IQA+INDEX+3)=-1.0-C                                                00086
+      Q(IQA+INDEX+4)=-1.0                                                  00087
+      INDEX=INDEX+4                                                        00088
+      IQ(IQUMA+I+1)=INDEX                                                  00089
+    1 CONTINUE                                                             00090
+      IQ(JHA+INDEX+1)=NG-1                                                 00091
+      IQ(JHA+INDEX+2)=NG                                                   00092
+      IQ(JHA+INDEX+3)=2*NG                                                 00093
+      Q(IQA+INDEX+1)=-1.0+C                                                00094
+      Q(IQA+INDEX+2)=4.0                                                   00095
+      Q(IQA+INDEX+3)=-1.0                                                  00096
+      INDEX=INDEX+3                                                        00097
+      IQ(IQUMA+NG)=INDEX                                                   00098
+      INDEX1=NG+1                                                          00099
+      DO 2 I=1,NG2                                                         00100
+      IQ(JHA+INDEX+1)=1+(I-1)*NG                                           00101
+      IQ(JHA+INDEX+2)=1+I*NG                                               00102
+      IQ(JHA+INDEX+3)=2+I*NG                                               00103
+      IQ(JHA+INDEX+4)=1+(I+1)*NG                                           00104
+       Q(IQA+INDEX+1)=-1.0                                                 00105
+       Q(IQA+INDEX+2)=4.0                                                  00106
+       Q(IQA+INDEX+3)=-1.0-C                                               00107
+       Q(IQA+INDEX+4)=-1.0                                                 00108
+      INDEX=INDEX+4                                                        00109
+      IQ(IQUMA+INDEX1)=INDEX                                               00110
+      INDEX1=INDEX1+1                                                      00111
+      NG1=NG-1                                                             00112
+      DO 3 J=2,NG1                                                         00113
+      IQ(JHA+INDEX+1)=(I-1)*NG+J                                           00114
+      IQ(JHA+INDEX+2)=I*NG+J-1                                             00115
+      IQ(JHA+INDEX+3)=I*NG+J                                               00116
+      IQ(JHA+INDEX+4)=I*NG+J+1                                             00117
+      IQ(JHA+INDEX+5)=(I+1)*NG+J                                           00118
+      Q(IQA+INDEX+1)=-1.0                                                  00119
+      Q(IQA+INDEX+2)=-1.0+C                                                00120
+      Q(IQA+INDEX+3)=4.0                                                   00121
+      Q(IQA+INDEX+4)=-1.0-C                                                00122
+      Q(IQA+INDEX+5)=-1.0                                                  00123
+      INDEX=INDEX+5                                                        00124
+      IQ(IQUMA+INDEX1)=INDEX                                               00125
+      INDEX1=INDEX1+1                                                      00126
+    3 CONTINUE                                                             00127
+      IQ(JHA+INDEX+1)=I*NG                                                 00128
+      IQ(JHA+INDEX+2)=(I+1)*NG-1                                           00129
+      IQ(JHA+INDEX+3)=(I+1)*NG                                             00130
+      IQ(JHA+INDEX+4)=(I+2)*NG                                             00131
+      Q(IQA+INDEX+1)=-1.0                                                  00132
+      Q(IQA+INDEX+2)=-1.0+C                                                00133
+      Q(IQA+INDEX+3)=4.0                                                   00134
+      Q(IQA+INDEX+4)=-1.0                                                  00135
+       INDEX=INDEX+4                                                       00136
+      IQ(IQUMA+INDEX1)=INDEX                                               00137
+      INDEX1=INDEX1+1                                                      00138
+    2 CONTINUE                                                             00139
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00140
+      IQ(JHA+INDEX+2)=INDEX1                                               00141
+      IQ(JHA+INDEX+3)=INDEX1+1                                             00142
+      Q(IQA+INDEX+1)=-1.0                                                  00143
+      Q(IQA+INDEX+2)=4.0                                                   00144
+      Q(IQA+INDEX+3)=-1.0-C                                                00145
+      INDEX=INDEX+3                                                        00146
+      IQ(IQUMA+INDEX1)=INDEX                                               00147
+      INDEX1=INDEX1+1                                                      00148
+      DO 4 I=1,NG2                                                         00149
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00150
+      IQ(JHA+INDEX+2)=INDEX1-1                                             00151
+      IQ(JHA+INDEX+3)=INDEX1                                               00152
+      IQ(JHA+INDEX+4)=INDEX1+1                                             00153
+      Q(IQA+INDEX+1)=-1.0                                                  00154
+      Q(IQA+INDEX+2)=-1.0+C                                                00155
+      Q(IQA+INDEX+3)=4.0                                                   00156
+      Q(IQA+INDEX+4)=-1.0-C                                                00157
+      INDEX=INDEX+4                                                        00158
+      IQ(IQUMA+INDEX1)=INDEX                                               00159
+      INDEX1=INDEX1+1                                                      00160
+    4 CONTINUE                                                             00161
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00162
+      IQ(JHA+INDEX+2)=INDEX1-1                                             00163
+      IQ(JHA+INDEX+3)=INDEX1                                               00164
+      Q(IQA+INDEX+1)=-1.0                                                  00165
+      Q(IQA+INDEX+2)=-1.0+C                                                00166
+      Q(IQA+INDEX+3)=4.0                                                   00167
+      INDEX=INDEX+3                                                        00168
+      IQ(IQUMA+INDEX1)=INDEX                                               00169
+      L1=1                                                                 00170
+      L2=NG                                                                00171
+      DO 111 JI=1,NG                                                       00172
+      K=1                                                                  00173
+      DO 112 II=L1,L2                                                      00174
+      X=K*H                                                                00175
+      Y=1.0-JI*H                                                           00176
+      F=(-2.0*(PI**2)*SIN(PI*X)*SIN(PI*Y)+BT*PI*COS(PI*X)*SIN(PI*Y         00177
+     *))*H**2                                                              00178
+      Q(IQB+II)=-F                                                         00179
+      K=K+1                                                                00180
+ 112  CONTINUE                                                             00181
+      L1=L1+NG                                                             00182
+      L2=L2+NG                                                             00183
+ 111  CONTINUE                                                             00184
+      NELA=NELAR                                                           00185
+      NELR=NELGR                                                           00186
+      NELI=NELGI                                                           00187
+      TOLER=1.E-6                                                          00188
+      NP=20                                                                00189
+      IQA=IQA1                                                             00190
+      IQJHA=IQJHA1                                                         00191
+      IQUMA=IQJHA+NELA                                                     00192
+      IQB=IQA+NELA                                                         00193
+      IQX=IQB+N                                                            00194
+      IQP1=IQX+N                                                           00195
+      IQR=IQP1+N                                                           00196
+      IQS=IQR+N                                                            00197
+      IQD=IQS+N                                                            00198
+      ITER=0                                                               00199
+      DO 401 I=1,N                                                         00200
+      Q(IQX+I)=0.0                                                         00201
+  401 CONTINUE                                                             00202
+   8   CONTINUE                                                            00203
+C   INITIAL CALCULATIONS                                                   00204
+      ITERN=0                                                              00205
+C  R=A*X0                                                                  00206
+      IQXX=IQX                                                             00207
+      IQRR=IQR                                                             00208
+      IL=1                                                                 00209
+      DO 301 I=1,N                                                         00210
+      SUM=0.0                                                              00211
+      IT=IQ(IQUMA+I)                                                       00212
+      DO 302 II=IL,IT                                                      00213
+      J=IQ(IQJHA+II)                                                       00214
+  302 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00215
+      Q(IQRR+I)=SUM                                                        00216
+      IL=IT+1                                                              00217
+  301 CONTINUE                                                             00218
+C  R0=B-AX0                                                                00219
+      DO 510 I=1,N                                                         00220
+  510 Q(IQR+I)=Q(IQB+I)-Q(IQR+I)                                           00221
+      DO 505 I=1,N                                                         00222
+ 505  Q(IQP1+I)=Q(IQR+I)                                                   00223
+C    ITERATIVE LOOP                                                        00224
+   5  CONTINUE                                                             00225
+C  UPDATE ITERATION COUNTER                                                00226
+      ITERN=ITERN+1                                                        00227
+      ITER=ITER+1                                                          00228
+C   FIND OPTIMUM POINT ALONG SEARCH DIRECTION                              00229
+C    D=A*PI                                                                00230
+      IQXX=IQP1                                                            00231
+      IQRR=IQD                                                             00232
+      IL=1                                                                 00233
+      DO 311 I=1,N                                                         00234
+      SUM=0.0                                                              00235
+      IT=IQ(IQUMA+I)                                                       00236
+      DO 312 II=IL,IT                                                      00237
+      J=IQ(IQJHA+II)                                                       00238
+  312 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00239
+      Q(IQRR+I)=SUM                                                        00240
+      IL=IT+1                                                              00241
+  311 CONTINUE                                                             00242
+      ALPHA=0.0                                                            00243
+      T=0.0                                                                00244
+      DO 535 I=1,N                                                         00245
+  535 ALPHA=ALPHA+Q(IQR+I)*Q(IQD+I)                                        00246
+      DO 536 I=1,N                                                         00247
+  536 T=T+Q(IQD+I)*Q(IQD+I)                                                00248
+      ALPHA=ALPHA/T                                                        00249
+C   FIND NEW RESIDUAL VECTOR                                               00250
+      DO 620 I=1,N                                                         00251
+ 620  Q(IQS+I)=Q(IQD+I)*ALPHA                                              00252
+      DO 520 I=1,N                                                         00253
+ 520  Q(IQR+I)=Q(IQR+I)-Q(IQS+I)                                           00254
+C   FIND NEW SOLUTION APPROXIMATION                                        00255
+      DO 602 I=1,N                                                         00256
+  602 Q(IQS+I)=Q(IQP1+I)*ALPHA                                             00257
+      DO 502 I=1,N                                                         00258
+  502 Q(IQX+I)=Q(IQX+I)+Q(IQS+I)                                           00259
+C   FIND NORM OF RESIDUAL                                                  00260
+      BIG=0.0                                                              00261
+      BIGS=0.0                                                             00262
+      DO 645 I=1,N                                                         00263
+      B1=ABS(Q(IQR+I))                                                     00264
+      B2=ABS(Q(IQS+I))                                                     00265
+      IF(BIG.LT.B1) BIG=B1                                                 00266
+      IF(BIGS.LT.B2) BIGS=B2                                               00267
+  645 CONTINUE                                                             00268
+C    STOP IF TOLERANCE IS MET                                              00269
+      IF(BIG.LE.TOLER) GO TO 7                                             00270
+      IF(BIGS.LE.TOLER) GO TO 7                                            00271
+      IF(ITER.GT.MAXIT) GO TO 7                                            00272
+C  IF MORE THAN N ITERATION THEN START AGAIN FROM NEW POINT                00273
+C   REMOVE ROUNDOFF ERROR                                                  00274
+      IF(ITERN.GT.NP) GO TO 8                                              00275
+C    ORTHONORMALIZATION PROCEDURE                                          00276
+      IQXX=IQR                                                             00277
+      IQRR=IQS                                                             00278
+      IL=1                                                                 00279
+      DO 331 I=1,N                                                         00280
+      SUM=0.0                                                              00281
+      IT=IQ(IQUMA+I)                                                       00282
+      DO 342 II=IL,IT                                                      00283
+      J=IQ(IQJHA+II)                                                       00284
+  342 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00285
+      Q(IQRR+I)=SUM                                                        00286
+      IL=IT+1                                                              00287
+  331 CONTINUE                                                             00288
+C    FIND BETA                                                             00289
+      U=0.0                                                                00290
+      BETA=0.0                                                             00291
+      DO 555 I=1,N                                                         00292
+  555 U=U+Q(IQS+I)*Q(IQD+I)                                                00293
+      DO 546 I=1,N                                                         00294
+  546 BETA=BETA+Q(IQD+I)*Q(IQD+I)                                          00295
+      BETA=-U/BETA                                                         00296
+C    FIND NEW SEARCH DIRECTION                                             00297
+      DO 672 I=1,N                                                         00298
+ 672  Q(IQP1+I)=Q(IQP1+I)*BETA                                             00299
+      DO 500 I=1,N                                                         00300
+  500 Q(IQP1+I)=Q(IQP1+I)+Q(IQR+I)                                         00301
+      GO TO 5                                                              00302
+    7 CONTINUE                                                             00303
+      IT1=ITER                                                             00304
+      ALPH=ALPHA                                                           00305
+      BIG1=BIG                                                             00306
+      ERR=0.0                                                              00307
+      L1=1                                                                 00308
+      L2=NG                                                                00309
+      DO 811 JI=1,NG                                                       00310
+      K=1                                                                  00311
+      DO 812 II=L1,L2                                                      00312
+      X=K*H                                                                00313
+      Y=1.0-JI*H                                                           00314
+      ER1=ABS(Q(IQGEND+II)-SIN(PI*X)*SIN(PI*Y))                            00315
+      IF(ABS(ER1).GT.ERR) ERR=ER1                                          00316
+      K=K+1                                                                00317
+ 812  CONTINUE                                                             00318
+      L1=L1+NG                                                             00319
+      L2=L2+NG                                                             00320
+ 811  CONTINUE                                                             00321
+  288  CONTINUE                                                            00322
+      CALL PTIME                                                           00323
+      PRINT 182,ICYCL,N,ITER,ALPHA,BIG,ERR                                 00324
+  182 FORMAT(' ЧИCЛO ПOBTOPEHИЙ PACЧETA        ',I10,/,                    00325
+     *' ЧИCЛO YPABHEHИЙ                   ',I10,/,                         00326
+     *' ЧИCЛO ИTEPAЦИЙ                    ',I10,/,                         00327
+     *' OPTOГOHAЛЬHOCTЬ БAЗИCHЫX BEKTOPOB ',E12.5,/,                       00328
+     *' HEBЯЗKA AЛГEБPAИЧECKOЙ CИCTEMЫ    ',E12.5,/,                       00329
+     *' OШИБKA PEШEHИЯ                    ',E12.5)                         00330
+      STOP                                                                 00331
+      END                                                                  00332
+*END F                                                                     00333
+*READ OLD
+      PROGRAM ELBRUS                                                       00001
+C PEШEHИE CИCTEMЫ ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ                        00002
+C ПPИ ИCПOЛЬЗOBAHИИ CTAHДAPTHOЙ ПЯTИTOЧEЧHOЙ AППPOK-                       00003
+C CИMAЦИИ ДИФФEPEHЦИAЛЬHOГO YPABHEHИЯ                                      00004
+C  D/DX (DU/DX) + D/DY (DU/DY) + B (DU/DX+DU/DY)=F(X,Y)                    00005
+C 0.LE.X.LE.1 , 0.LE.Y.LE.1,                                               00006
+C U=0 HA ГPAHИЦE OБЛACTИ, TOЧHOE PEШEHИE                                   00007
+C U =SIN(PI X)*SIN(PI Y)                                                   00008
+C ЗAДAЧA ИЗ KHИГИ Л.XEЙГEMAH, Д.ЯHГ                                        00009
+C ПPИKЛAДHЫE ИTEPAЦИOHHЫE METOДЫ                                           00010
+C MOCKBA MИP 1986 Г.                                                       00011
+C CИCTEMA ЛИHEЙHЫX AЛГEБPAИЧECKИX YPABHEHИЙ                                00012
+C PEШAETCЯ METOДOM OPTOГOHAЛЬHЫX HEBЯЗOK                                   00013
+C OПИCAHHЫM B TOЙ ЖE KHИГE                                                 00014
+C MATPИЦA CИCTEMЫ ПЯTИДИAГOHAЛЬHAЯ HECИMMETPИЧHAЯ                          00015
+C HEЗHAKOOПPEДEЛEHHAЯ                                                      00016
+C HA ПEЧATЬ BЫBOДИTCЯ                                                      00017
+C ЧИCЛO YPAHHИЙ CИCTEMЫ                                                    00018
+C ЧИCЛO ИTEPAЦИЙ ПPИ EE PEШEHИИ                                            00019
+C OPTOГOHAЛЬHOCTЬ БAЗИCHЫX BEKTOPOB                                        00020
+C HOPMA HEBЯЗKИ ЛИHEЙHOЙ CИCTEMЫ T.E.                                      00021
+C OШИБKA BЫЧИCЛEHHOГO PEШEHИЯ ПO CPABHEHИЮ                                 00022
+C C TOЧHЫM.                                                                00023
+C                                                                          00024
+C ДЛЯ ПOBЫШEHИЯ PAЗMEPHOCTИ ЗAДAЧИ                                         00025
+C CЛEДYET ЗAДATЬ ДЛИHY PAБOЧEЙ ПAMЯTИ                                      00026
+C     DIMENSION Q(XXXXXX)                                                  00027
+C    ЗHAЧEHИE XXXXXX                                                       00028
+C  B NELQ=XXXXXX                                                           00029
+      DIMENSION Q(18000),IQ(1)                                             00030
+      EQUIVALENCE (Q(1),IQ(1))                                             00031
+      NELQ=18000                                                           00032
+      ICYCL=1                                                              00033
+      CALL PTIME                                                           00034
+      DO 288 KR=1,ICYCL                                                    00035
+      N=NELQ/18                                                            00036
+      NG=SQRT(N)                                                           00037
+      N=NG*NG                                                              00038
+      NPOINT=NG+2                                                          00039
+      NELGI=NELQ                                                           00040
+      NELGR=11*N                                                           00041
+      NELAR=5*N                                                            00042
+      ISTACR=0                                                             00043
+      ISTACI=NELGR                                                         00044
+      EPS=1.E-6                                                            00045
+      MAXIT=500                                                            00046
+      IQA1=0                                                               00047
+      IQB=IQA1+NELAR                                                       00048
+      IQGEND=IQB+N                                                         00049
+      IQJHA1=ISTACI                                                        00050
+      IQUMA=IQJHA1+NELAR                                                   00051
+      ISENDI=IQUMA+N                                                       00052
+      IQA=IQA1                                                             00053
+      JHA=IQJHA1                                                           00054
+      PI=4.0*ATAN(1.0)                                                     00055
+      BT=-100.0                                                            00056
+      H=1.0/(NPOINT-1)                                                     00057
+      C=H*BT/2.0                                                           00058
+      IQ(JHA+1)=1                                                          00059
+      IQ(JHA+2)=2                                                          00060
+      IQ(JHA+3)=NG+1                                                       00061
+      Q(IQA+1)=4.0                                                         00062
+      Q(IQA+2)=-1.0-C                                                      00063
+      Q(IQA+3)=-1.0                                                        00064
+      INDEX=3                                                              00065
+      IQ(IQUMA+1)=3                                                        00066
+      NG2=NG-2                                                             00067
+      DO 1 I=1,NG2                                                         00068
+      IQ(JHA+INDEX+1)=I                                                    00069
+      IQ(JHA+INDEX+2)=I+1                                                  00070
+      IQ(JHA+INDEX+3)=I+2                                                  00071
+      IQ(JHA+INDEX+4)=I+NG+1                                               00072
+      Q(IQA+INDEX+1)=-1.0+C                                                00073
+      Q(IQA+INDEX+2)=4.0                                                   00074
+      Q(IQA+INDEX+3)=-1.0-C                                                00075
+      Q(IQA+INDEX+4)=-1.0                                                  00076
+      INDEX=INDEX+4                                                        00077
+      IQ(IQUMA+I+1)=INDEX                                                  00078
+    1 CONTINUE                                                             00079
+      IQ(JHA+INDEX+1)=NG-1                                                 00080
+      IQ(JHA+INDEX+2)=NG                                                   00081
+      IQ(JHA+INDEX+3)=2*NG                                                 00082
+      Q(IQA+INDEX+1)=-1.0+C                                                00083
+      Q(IQA+INDEX+2)=4.0                                                   00084
+      Q(IQA+INDEX+3)=-1.0                                                  00085
+      INDEX=INDEX+3                                                        00086
+      IQ(IQUMA+NG)=INDEX                                                   00087
+      INDEX1=NG+1                                                          00088
+      DO 2 I=1,NG2                                                         00089
+      IQ(JHA+INDEX+1)=1+(I-1)*NG                                           00090
+      IQ(JHA+INDEX+2)=1+I*NG                                               00091
+      IQ(JHA+INDEX+3)=2+I*NG                                               00092
+      IQ(JHA+INDEX+4)=1+(I+1)*NG                                           00093
+       Q(IQA+INDEX+1)=-1.0                                                 00094
+       Q(IQA+INDEX+2)=4.0                                                  00095
+       Q(IQA+INDEX+3)=-1.0-C                                               00096
+       Q(IQA+INDEX+4)=-1.0                                                 00097
+      INDEX=INDEX+4                                                        00098
+      IQ(IQUMA+INDEX1)=INDEX                                               00099
+      INDEX1=INDEX1+1                                                      00100
+      NG1=NG-1                                                             00101
+      DO 3 J=2,NG1                                                         00102
+      IQ(JHA+INDEX+1)=(I-1)*NG+J                                           00103
+      IQ(JHA+INDEX+2)=I*NG+J-1                                             00104
+      IQ(JHA+INDEX+3)=I*NG+J                                               00105
+      IQ(JHA+INDEX+4)=I*NG+J+1                                             00106
+      IQ(JHA+INDEX+5)=(I+1)*NG+J                                           00107
+      Q(IQA+INDEX+1)=-1.0                                                  00108
+      Q(IQA+INDEX+2)=-1.0+C                                                00109
+      Q(IQA+INDEX+3)=4.0                                                   00110
+      Q(IQA+INDEX+4)=-1.0-C                                                00111
+      Q(IQA+INDEX+5)=-1.0                                                  00112
+      INDEX=INDEX+5                                                        00113
+      IQ(IQUMA+INDEX1)=INDEX                                               00114
+      INDEX1=INDEX1+1                                                      00115
+    3 CONTINUE                                                             00116
+      IQ(JHA+INDEX+1)=I*NG                                                 00117
+      IQ(JHA+INDEX+2)=(I+1)*NG-1                                           00118
+      IQ(JHA+INDEX+3)=(I+1)*NG                                             00119
+      IQ(JHA+INDEX+4)=(I+2)*NG                                             00120
+      Q(IQA+INDEX+1)=-1.0                                                  00121
+      Q(IQA+INDEX+2)=-1.0+C                                                00122
+      Q(IQA+INDEX+3)=4.0                                                   00123
+      Q(IQA+INDEX+4)=-1.0                                                  00124
+       INDEX=INDEX+4                                                       00125
+      IQ(IQUMA+INDEX1)=INDEX                                               00126
+      INDEX1=INDEX1+1                                                      00127
+    2 CONTINUE                                                             00128
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00129
+      IQ(JHA+INDEX+2)=INDEX1                                               00130
+      IQ(JHA+INDEX+3)=INDEX1+1                                             00131
+      Q(IQA+INDEX+1)=-1.0                                                  00132
+      Q(IQA+INDEX+2)=4.0                                                   00133
+      Q(IQA+INDEX+3)=-1.0-C                                                00134
+      INDEX=INDEX+3                                                        00135
+      IQ(IQUMA+INDEX1)=INDEX                                               00136
+      INDEX1=INDEX1+1                                                      00137
+      DO 4 I=1,NG2                                                         00138
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00139
+      IQ(JHA+INDEX+2)=INDEX1-1                                             00140
+      IQ(JHA+INDEX+3)=INDEX1                                               00141
+      IQ(JHA+INDEX+4)=INDEX1+1                                             00142
+      Q(IQA+INDEX+1)=-1.0                                                  00143
+      Q(IQA+INDEX+2)=-1.0+C                                                00144
+      Q(IQA+INDEX+3)=4.0                                                   00145
+      Q(IQA+INDEX+4)=-1.0-C                                                00146
+      INDEX=INDEX+4                                                        00147
+      IQ(IQUMA+INDEX1)=INDEX                                               00148
+      INDEX1=INDEX1+1                                                      00149
+    4 CONTINUE                                                             00150
+      IQ(JHA+INDEX+1)=INDEX1-NG                                            00151
+      IQ(JHA+INDEX+2)=INDEX1-1                                             00152
+      IQ(JHA+INDEX+3)=INDEX1                                               00153
+      Q(IQA+INDEX+1)=-1.0                                                  00154
+      Q(IQA+INDEX+2)=-1.0+C                                                00155
+      Q(IQA+INDEX+3)=4.0                                                   00156
+      INDEX=INDEX+3                                                        00157
+      IQ(IQUMA+INDEX1)=INDEX                                               00158
+      L1=1                                                                 00159
+      L2=NG                                                                00160
+      DO 111 JI=1,NG                                                       00161
+      K=1                                                                  00162
+      DO 112 II=L1,L2                                                      00163
+      X=K*H                                                                00164
+      Y=1.0-JI*H                                                           00165
+      F=(-2.0*(PI**2)*SIN(PI*X)*SIN(PI*Y)+BT*PI*COS(PI*X)*SIN(PI*Y         00166
+     *))*H**2                                                              00167
+      Q(IQB+II)=-F                                                         00168
+      K=K+1                                                                00169
+ 112  CONTINUE                                                             00170
+      L1=L1+NG                                                             00171
+      L2=L2+NG                                                             00172
+ 111  CONTINUE                                                             00173
+      NELA=NELAR                                                           00174
+      NELR=NELGR                                                           00175
+      NELI=NELGI                                                           00176
+      TOLER=1.E-6                                                          00177
+      NP=20                                                                00178
+      IQA=IQA1                                                             00179
+      IQJHA=IQJHA1                                                         00180
+      IQUMA=IQJHA+NELA                                                     00181
+      IQB=IQA+NELA                                                         00182
+      IQX=IQB+N                                                            00183
+      IQP1=IQX+N                                                           00184
+      IQR=IQP1+N                                                           00185
+      IQS=IQR+N                                                            00186
+      IQD=IQS+N                                                            00187
+      ITER=0                                                               00188
+      DO 401 I=1,N                                                         00189
+      Q(IQX+I)=0.0                                                         00190
+  401 CONTINUE                                                             00191
+   8   CONTINUE                                                            00192
+C   INITIAL CALCULATIONS                                                   00193
+      ITERN=0                                                              00194
+C  R=A*X0                                                                  00195
+      IQXX=IQX                                                             00196
+      IQRR=IQR                                                             00197
+      IL=1                                                                 00198
+      DO 301 I=1,N                                                         00199
+      SUM=0.0                                                              00200
+      IT=IQ(IQUMA+I)                                                       00201
+      DO 302 II=IL,IT                                                      00202
+      J=IQ(IQJHA+II)                                                       00203
+  302 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00204
+      Q(IQRR+I)=SUM                                                        00205
+      IL=IT+1                                                              00206
+  301 CONTINUE                                                             00207
+C  R0=B-AX0                                                                00208
+      DO 510 I=1,N                                                         00209
+  510 Q(IQR+I)=Q(IQB+I)-Q(IQR+I)                                           00210
+      DO 505 I=1,N                                                         00211
+ 505  Q(IQP1+I)=Q(IQR+I)                                                   00212
+C    ITERATIVE LOOP                                                        00213
+   5  CONTINUE                                                             00214
+C  UPDATE ITERATION COUNTER                                                00215
+      ITERN=ITERN+1                                                        00216
+      ITER=ITER+1                                                          00217
+C   FIND OPTIMUM POINT ALONG SEARCH DIRECTION                              00218
+C    D=A*PI                                                                00219
+      IQXX=IQP1                                                            00220
+      IQRR=IQD                                                             00221
+      IL=1                                                                 00222
+      DO 311 I=1,N                                                         00223
+      SUM=0.0                                                              00224
+      IT=IQ(IQUMA+I)                                                       00225
+      DO 312 II=IL,IT                                                      00226
+      J=IQ(IQJHA+II)                                                       00227
+  312 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00228
+      Q(IQRR+I)=SUM                                                        00229
+      IL=IT+1                                                              00230
+  311 CONTINUE                                                             00231
+      ALPHA=0.0                                                            00232
+      T=0.0                                                                00233
+      DO 535 I=1,N                                                         00234
+  535 ALPHA=ALPHA+Q(IQR+I)*Q(IQD+I)                                        00235
+      DO 536 I=1,N                                                         00236
+  536 T=T+Q(IQD+I)*Q(IQD+I)                                                00237
+      ALPHA=ALPHA/T                                                        00238
+C   FIND NEW RESIDUAL VECTOR                                               00239
+      DO 620 I=1,N                                                         00240
+ 620  Q(IQS+I)=Q(IQD+I)*ALPHA                                              00241
+      DO 520 I=1,N                                                         00242
+ 520  Q(IQR+I)=Q(IQR+I)-Q(IQS+I)                                           00243
+C   FIND NEW SOLUTION APPROXIMATION                                        00244
+      DO 602 I=1,N                                                         00245
+  602 Q(IQS+I)=Q(IQP1+I)*ALPHA                                             00246
+      DO 502 I=1,N                                                         00247
+  502 Q(IQX+I)=Q(IQX+I)+Q(IQS+I)                                           00248
+C   FIND NORM OF RESIDUAL                                                  00249
+      BIG=0.0                                                              00250
+      BIGS=0.0                                                             00251
+      DO 645 I=1,N                                                         00252
+      B1=ABS(Q(IQR+I))                                                     00253
+      B2=ABS(Q(IQS+I))                                                     00254
+      IF(BIG.LT.B1) BIG=B1                                                 00255
+      IF(BIGS.LT.B2) BIGS=B2                                               00256
+  645 CONTINUE                                                             00257
+C    STOP IF TOLERANCE IS MET                                              00258
+      IF(BIG.LE.TOLER) GO TO 7                                             00259
+      IF(BIGS.LE.TOLER) GO TO 7                                            00260
+      IF(ITER.GT.MAXIT) GO TO 7                                            00261
+C  IF MORE THAN N ITERATION THEN START AGAIN FROM NEW POINT                00262
+C   REMOVE ROUNDOFF ERROR                                                  00263
+      IF(ITERN.GT.NP) GO TO 8                                              00264
+C    ORTHONORMALIZATION PROCEDURE                                          00265
+      IQXX=IQR                                                             00266
+      IQRR=IQS                                                             00267
+      IL=1                                                                 00268
+      DO 331 I=1,N                                                         00269
+      SUM=0.0                                                              00270
+      IT=IQ(IQUMA+I)                                                       00271
+      DO 342 II=IL,IT                                                      00272
+      J=IQ(IQJHA+II)                                                       00273
+  342 SUM=SUM+Q(IQA+II)*Q(IQXX+J)                                          00274
+      Q(IQRR+I)=SUM                                                        00275
+      IL=IT+1                                                              00276
+  331 CONTINUE                                                             00277
+C    FIND BETA                                                             00278
+      U=0.0                                                                00279
+      BETA=0.0                                                             00280
+      DO 555 I=1,N                                                         00281
+  555 U=U+Q(IQS+I)*Q(IQD+I)                                                00282
+      DO 546 I=1,N                                                         00283
+  546 BETA=BETA+Q(IQD+I)*Q(IQD+I)                                          00284
+      BETA=-U/BETA                                                         00285
+C    FIND NEW SEARCH DIRECTION                                             00286
+      DO 672 I=1,N                                                         00287
+ 672  Q(IQP1+I)=Q(IQP1+I)*BETA                                             00288
+      DO 500 I=1,N                                                         00289
+  500 Q(IQP1+I)=Q(IQP1+I)+Q(IQR+I)                                         00290
+      GO TO 5                                                              00291
+    7 CONTINUE                                                             00292
+      IT1=ITER                                                             00293
+      ALPH=ALPHA                                                           00294
+      BIG1=BIG                                                             00295
+      ERR=0.0                                                              00296
+      L1=1                                                                 00297
+      L2=NG                                                                00298
+      DO 811 JI=1,NG                                                       00299
+      K=1                                                                  00300
+      DO 812 II=L1,L2                                                      00301
+      X=K*H                                                                00302
+      Y=1.0-JI*H                                                           00303
+      ER1=ABS(Q(IQGEND+II)-SIN(PI*X)*SIN(PI*Y))                            00304
+      IF(ABS(ER1).GT.ERR) ERR=ER1                                          00305
+      K=K+1                                                                00306
+ 812  CONTINUE                                                             00307
+      L1=L1+NG                                                             00308
+      L2=L2+NG                                                             00309
+ 811  CONTINUE                                                             00310
+  288  CONTINUE                                                            00311
+      CALL PTIME                                                           00312
+      PRINT 182,ICYCL,N,ITER,ALPHA,BIG,ERR                                 00313
+  182 FORMAT(' ЧИCЛO ПOBTOPEHИЙ PACЧETA        ',I10,/,                    00314
+     *' ЧИCЛO YPABHEHИЙ                   ',I10,/,                         00315
+     *' ЧИCЛO ИTEPAЦИЙ                    ',I10,/,                         00316
+     *' OPTOГOHAЛЬHOCTЬ БAЗИCHЫX BEKTOPOB ',E12.5,/,                       00317
+     *' HEBЯЗKA AЛГEБPAИЧECKOЙ CИCTEMЫ    ',E12.5,/,                       00318
+     *' OШИБKA PEШEHИЯ                    ',E12.5)                         00319
+      STOP                                                                 00320
+      END                                                                  00321
+*READ OLD
